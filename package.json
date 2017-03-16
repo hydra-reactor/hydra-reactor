@@ -1,18 +1,26 @@
 {
-  "name": "Hydra-Reactor",
+  "name": "hydra-reactor",
   "version": "1.0.0",
   "description": "Hydra-Reactor",
-  "author": "Hydra-Reactor Team",
-  "license": "UNLICENSED",
-  "private": true,
+  "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darinallen/hydra-reactor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darinallen/hydra-reactor/issues"
+  },
+  "homepage": "https://github.com/darinallen/hydra-reactor#readme",
   "dependencies": {
-
-    "body-parser": "1.15.0",
-    "express": "4.15.2",
-    "mongodb": "3.4.2",
-    "mongoose": "4.9.0",
-    "path": "O.12.7"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.0",
+    "path": "^0.12.7",
+    "request": "^2.81.0"
   }
+}
