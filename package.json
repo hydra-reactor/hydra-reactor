@@ -15,11 +15,4 @@
     "mongodb": "3.4.2",
     "mongoose": "4.9.0",
     "path": "O.12.7"
-  },
-  "devDependencies": {
-
-    "chai": "3.5.0",
-    "mocha": "2.3.3",
-    "sinon": "1.17.3"
   }
-}
