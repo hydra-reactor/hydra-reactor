@@ -1,0 +1,18 @@
+{
+  "name": "Hydra-Reactor",
+  "version": "1.0.0",
+  "description": "Hydra-Reactor",
+  "author": "Hydra-Reactor Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": ""
+  },
+  "dependencies": {
+
+    "body-parser": "1.15.0",
+    "express": "4.15.2",
+    "mongodb": "3.4.2",
+    "mongoose": "4.9.0",
+    "path": "O.12.7"
+  }
