@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var List = new Schema({
+var ListSchema = new Schema({
   description: String,
   category: String
 });
+
+var List = mongoose.model('List', ListSchema);
 
 module.exports = List;
 
