@@ -1,22 +1,20 @@
 {
-  "name": "MVP",
-  "version": "1.1.0",
-  "description": "Food Tracker",
-  "author": "Chris Abrami <abramicf@gmail.com>",
+  "name": "Hydra-Reactor",
+  "version": "1.0.0",
+  "description": "Hydra-Reactor",
+  "author": "Hydra-Reactor Team",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "test": "live-server --open=./SpecRunner.html --port=8081"
+    "test": ""
   },
   "dependencies": {
 
     "body-parser": "1.15.0",
     "express": "4.15.2",
     "jquery": "2.2.1",
-    "lodash": "4.6.1",
     "mongodb": "3.4.2",
     "mongoose": "4.9.0",
-    "bluebird": "3.5.0",
     "path": "O.12.7"
   },
   "devDependencies": {
