@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Hydra-Reactor",
   "main": "index.js",
+  "scripts": {
+
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darinallen/hydra-reactor.git"
@@ -21,4 +24,3 @@
     "request": "^2.81.0"
   }
 }
-
