@@ -8,25 +8,15 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/hydra');
+
+mongoose.connect('mongodb://heroku_0fn1fg98:vi2sk4eagfo3dj3pbg1407vr0l@ds133450.mlab.com:33450/heroku_0fn1fg98/hydra');
+//mongoose.connect('mongodb://localhost/hydra');
 var db = mongoose.connection;
 
-// Activity.create({
-//   description: 'Ryan\'s Terrible Tacos',
-//   category: 'food'
-// });
+// Serve static files.
+app.use(express.static(path.join(__dirname, '../client/')));
 
-// Code example included in https://github.com/expressjs/body-parser
-// app.use(function (req, res) {
-//   res.setHeader('Content-Type', 'text/plain')
-//   res.write('you posted:\n')
-//   res.end(JSON.stringify(req.body, null, 2))
-// })
-
-// Serve static files. NEED TO UPDATE PATH
-app.use(express.static(__dirname + './../client'));
-
-// Set up GET request listener for retrieiving links
+//Set up GET request listener for retrieiving links
 app.get('/api/activities', function(req, res) {
   console.log('req.body: ', req.body);
   Activity.find(function(err, data) {
@@ -50,3 +40,19 @@ var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 });
+
+
+//=======================DYNAMICALLY CONNECT TO DEV VS LIVE MONGODB===========================
+//
+// var uristring =
+//     process.env.MONGOLAB_URI ||
+//     process.env.MONGOHQ_URL ||
+//     'mongodb://localhost/HelloMongoose';
+//
+//     mongoose.connect(uristring, function (err, res) {
+//       if (err) {
+//       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+//       } else {
+//       console.log ('Succeeded connected to: ' + uristring);
+//       }
+//     });
