@@ -24,7 +24,7 @@ var db = mongoose.connection;
 // })
 
 // Serve static files. NEED TO UPDATE PATH
-// app.use(express.static(__dirname, '../client/'));
+app.use(express.static(path.join(__dirname, '../client/')));
 
 // Set up GET request listener for retrieiving links
 app.get('/api/activities', function(req, res) {
