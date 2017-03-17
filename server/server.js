@@ -12,7 +12,6 @@ mongoose.connect('mongodb://heroku_0fn1fg98:vi2sk4eagfo3dj3pbg1407vr0l@ds133450.
 //mongoose.connect('mongodb://localhost/hydra');
 var db = mongoose.connection;
 
-// Serve static files
 app.use(express.static(path.join(__dirname, '../client/')));
 
 //Set up GET request listener for retrieiving activities
