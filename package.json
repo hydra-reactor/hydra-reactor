@@ -4,6 +4,9 @@
   "description": "Hydra-Reactor",
   "main": "index.js",
   "scripts": {
+
+    "start": "node /server/server.js"
+
   },
 
   "repository": {
