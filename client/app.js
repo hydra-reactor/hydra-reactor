@@ -1,4 +1,6 @@
-angular.module('hydraApp', []).controller('activityController', function($scope, $http) {
+angular.module('hydraApp', [])
+
+.controller('activityController', function($scope, $http) {
   $scope.description = '';
   $scope.category = '';
   $scope.storage = [];
@@ -15,8 +17,17 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
         category: $scope.category
       }
     };
-    $http(req);
+    $http(req)
+    .then(function successCallback(response) {
+      $scope.storage.push(response.data);
+      console.log($scope.storage);
+        // this callback will be called asynchronously
+        // when the response is available
+    }, function errorCallback(error) {
+      console.log('error!');
+    });
   };
+
   $scope.getData = function() {
     var req = {
       method: 'GET',
@@ -32,6 +43,7 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
       console.log('error!');
     });
   };
+  $scope.getData();
 });
 
 // every time getData is run, clear our the storage and then push our response into storage

@@ -22,11 +22,12 @@
         <option value="Nightlife">Nightlife</option>
         <option value="Exercise">Exercise</option>
       </select>
-      <button ng-click='getData()'>Add New Activity!</button>
+      <button ng-click='postNewData()'>Add New Activity!</button>
     </form>
-    <div ng-repeat='item in storage track by $index'>{{item.description}} -- {{item.category}}</div>
+    <div ng-repeat='item in storage track by $index'>{{item.description}} -- {{item.category}} {{console.log(storage)}}</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js">
+    </script>
     <script src="app.js"></script>
   </body>
 </html>
