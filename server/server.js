@@ -24,21 +24,10 @@ var db = mongoose.connection;
 // })
 
 // Serve static files. NEED TO UPDATE PATH
-// app.use(express.static(__dirname, '../public/'));
-
-// Serve '/' page, update with index.html path. NEED TO UPDATE PATH
-// app.get('/', function(req, res, next) {
-//   res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
-//     if (err) {
-//       next(err);
-//     } else {
-//       console.log('Sent:', fileName);
-//     }
-//   });
-// });
+// app.use(express.static(__dirname, '../client/'));
 
 // Set up GET request listener for retrieiving links
-app.get('api/activities', function(req, res) {
+app.get('/api/activities', function(req, res) {
   console.log('req.body: ', req.body);
   Activity.find(function(err, data) {
     console.log('data: ', data);
@@ -47,7 +36,7 @@ app.get('api/activities', function(req, res) {
 });
 
 // Set up POST request listener for adding a link
-app.post('api/activities', function(req, res) {
+app.post('/api/activities', function(req, res) {
   console.log('req.body: ', req.body);
   Activity.create(req.body, function(err, data) {
     console.log('data: ', data);
