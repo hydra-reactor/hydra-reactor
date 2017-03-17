@@ -1,15 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 var app = angular.module('hydraApp', []);
 
 app.factory('Activities', function($http) {
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Completed GET and POST requests implementation and integration with server and database
 angular.module('hydraApp', [])
 
 .controller('activityController', function($scope, $http) {
-=======
 angular.module('hydraApp', []).controller('activityController', function($scope, $http) {
->>>>>>> Completed MVP front end work
+angular.module('hydraApp', [])
+
+.controller('activityController', function($scope, $http) {
   $scope.description = '';
   $scope.category = '';
   $scope.storage = [];
@@ -28,10 +32,13 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
       }
     };
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Pass the request object to an $http call
 =======
 <<<<<<< HEAD
 >>>>>>> Completed MVP front end work
+=======
+>>>>>>> Completed GET and POST requests implementation and integration with server and database
     $http(req)
     // the following will be called asynchronously when the response is available
     .then(function successCallback(response) {
@@ -40,20 +47,7 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
       storage.push(response.data);
 =======
       $scope.storage.push(response.data);
-      // console.log($scope.storage);
-=======
-    $http(req);
-  };
-  $scope.getData = function() {
-    var req = {
-      method: 'GET',
-      url: '/api/activities'
-    };
-    $http(req)
-    .then(function successCallback(response) {
-      $scope.storage = response.data;
-      console.log(response);
->>>>>>> Completed MVP front end work
+      console.log($scope.storage);
         // this callback will be called asynchronously
         // when the response is available
 >>>>>>> Completed MVP front end work
@@ -61,14 +55,6 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
       console.log('error!');
     });
   };
-<<<<<<< HEAD
-=======
-});
-
-// every time getData is run, clear our the storage and then push our response into storage
-
-// use ng-repeat on the index.html page to display each item in storage
->>>>>>> Completed MVP front end work
 
   // Function to get all activities from the database
   var getData = function() {
@@ -101,7 +87,14 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
     $http(req)
     // the following will be called asynchronously when the response is available
     .then(function successCallback(response) {
+<<<<<<< HEAD
       console.log('Client deleteActivity response: ', response);
+=======
+      $scope.storage = response.data;
+      console.log(response);
+        // this callback will be called asynchronously
+        // when the response is available
+>>>>>>> Completed GET and POST requests implementation and integration with server and database
     }, function errorCallback(error) {
       console.log('error!');
     });
