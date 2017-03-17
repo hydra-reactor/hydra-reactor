@@ -23,6 +23,7 @@ node_modules/
 # Server
 node_modules/
 npm-debug.log
+<<<<<<< HEAD
 
 db/
 client/lib
@@ -33,3 +34,5 @@ compiled/
 .floobit
 .floo
 .flooignore
+=======
+>>>>>>> resolving rebase conflicts.
