@@ -49,6 +49,3 @@ angular.module('hydraApp', [])
 // every time getData is run, clear our the storage and then push our response into storage
 
 // use ng-repeat on the index.html page to display each item in storage
-
-
-
