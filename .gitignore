@@ -1,29 +1,25 @@
-### OSX ###
 .DS_Store
 .AppleDouble
 .LSOverride
+azure.err
+iisnode.yml
+
+# Icon must ends with two \r.
 Icon
+
 # Thumbnails
 ._*
+
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-### Node ###
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-pids
-logs
-results
-### NPM ###
-npm-debug.log
 node_modules/
-### Bower ###
-**/bower_components/
-### PhPStorm ###
-.idea/
+db/
+client/lib
+compiled/
+
+# Floobits
+.floo
+.floobit
+.floo
+.flooignore

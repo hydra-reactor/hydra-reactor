@@ -23,8 +23,3 @@ angular.module('hydraApp', []).controller('activityController', function($scope,
     //   });
   }
 });
-
-
-
-
-
