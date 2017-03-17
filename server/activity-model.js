@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ListSchema = new Schema({
+var ActivitySchema = new Schema({
   description: String,
   category: String
 });
 
-var List = mongoose.model('List', ListSchema);
+var Activity = mongoose.model('Activity', ActivitySchema);
+console.log('Activity: ', Activity);
 
-module.exports = List;
+module.exports = Activity;
 
 // Image URLs associated with categories will be handled on the frontend
 // for ease of changing the images.

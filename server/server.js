@@ -2,9 +2,19 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
+var Activity = require('./activity-model.js');
+
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+mongoose.connect('mongodb://localhost/hydra');
+var db = mongoose.connection;
+
+// Activity.create({
+//   description: 'Ryan\'s Terrible Tacos',
+//   category: 'food'
+// });
 
 // Code example included in https://github.com/expressjs/body-parser
 // app.use(function (req, res) {
@@ -13,24 +23,37 @@ app.use(bodyParser.json());
 //   res.end(JSON.stringify(req.body, null, 2))
 // })
 
+// Serve static files. NEED TO UPDATE PATH
+// app.use(express.static(__dirname, '../public/'));
+
 // Serve '/' page, update with index.html path. NEED TO UPDATE PATH
-app.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
-    if (err) {
-      next(err);
-    } else {
-      console.log('Sent:', fileName);
-    }
+// app.get('/', function(req, res, next) {
+//   res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
+//     if (err) {
+//       next(err);
+//     } else {
+//       console.log('Sent:', fileName);
+//     }
+//   });
+// });
+
+// Set up GET request listener for retrieiving links
+app.get('api/activities', function(req, res) {
+  console.log('req.body: ', req.body);
+  Activity.find(function(err, data) {
+    console.log('data: ', data);
+    res.json(data);
   });
 });
 
-// Serve static files
-
-
-// Set up GET request listener for retrieiving links
-app.get(req, res)
-
 // Set up POST request listener for adding a link
+app.post('api/activities', function(req, res) {
+  console.log('req.body: ', req.body);
+  Activity.create(req.body, function(err, data) {
+    console.log('data: ', data);
+    res.json(data);
+  });
+});
 
 var port = process.env.PORT || 3000;
 // var ip = process.env.IP || 'localhost';
