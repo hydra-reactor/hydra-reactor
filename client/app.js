@@ -20,7 +20,7 @@ angular.module('hydraApp', [])
     $http(req)
     .then(function successCallback(response) {
       $scope.storage.push(response.data);
-      console.log($scope.storage);
+      // console.log($scope.storage);
         // this callback will be called asynchronously
         // when the response is available
     }, function errorCallback(error) {
@@ -36,7 +36,7 @@ angular.module('hydraApp', [])
     $http(req)
     .then(function successCallback(response) {
       $scope.storage = response.data;
-      console.log(response);
+      // console.log(response);
         // this callback will be called asynchronously
         // when the response is available
     }, function errorCallback(error) {
