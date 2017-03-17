@@ -4,6 +4,10 @@
   "description": "Hydra-Reactor",
   "main": "index.js",
   "scripts": {
+<<<<<<< d64faece1387f61053d9a7dd42cfe4ea055a1ff8
+=======
+    //"start": "node server/server.js"
+>>>>>>> updated mongodb and json
   },
   "repository": {
     "type": "git",
