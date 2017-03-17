@@ -1,6 +1,6 @@
 angular.module('hydraApp', [])
 
-.controller('activityController', function($scope, $http) {
+.controller('activityController', ['$scope', '$http', function($scope, $http) {
   $scope.description = '';
   $scope.category = '';
   $scope.storage = [];
@@ -44,7 +44,7 @@ angular.module('hydraApp', [])
     });
   };
   $scope.getData();
-});
+}]);
 
 // every time getData is run, clear our the storage and then push our response into storage
 
