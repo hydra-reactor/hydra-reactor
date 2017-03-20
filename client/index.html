@@ -30,11 +30,11 @@
         <option value="Nightlife">Nightlife</option>
         <option value="Exercise">Exercise</option>
       </select>
-      <button type="submit" class="btn btn-primary" ng-click='postNewData()'>Add New Activity</button>
+      <button type="submit" class="btn btn-primary" ng-click='postNewData(description, category, storage)'>Add New Activity</button>
     </form>
 
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat='item in storage track by $index'>{{item.description}} -- {{item.category}} {{console.log(storage)}}</li>
+      <li class="list-group-item" ng-repeat='item in storage track by $index' ng-click="deleteActivity(item); storage.splice(storage.indexOf(item), 1)">{{item.description}} -- {{item.category}} {{console.log(storage)}}</li>
     </ul>
   </div>
 
