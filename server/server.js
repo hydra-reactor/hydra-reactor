@@ -12,36 +12,45 @@ mongoose.connect('mongodb://heroku_0fn1fg98:vi2sk4eagfo3dj3pbg1407vr0l@ds133450.
 //mongoose.connect('mongodb://localhost/hydra');
 var db = mongoose.connection;
 
-// Serve static files.
+// Serve static files
 app.use(express.static(path.join(__dirname, '../client/')));
 
-//Set up GET request listener for retrieiving links
+//Set up GET request listener for retrieiving activities
 app.get('/api/activities', function(req, res) {
   console.log('Server GET req.body: ', req.body);
+  // Call Mongoose find method to retrieve all activities
   Activity.find(function(err, data) {
-    // console.log('Server GET data: ', data);
-    res.json(data);
+    if(err) {
+      console.log('Error: ', err)
+    } else {
+      res.json(data);
+    }
   });
 });
 
-// Set up POST request listener for adding a link
+// Set up POST request listener for adding an activity
 app.post('/api/activities', function(req, res) {
   console.log('Server POST req.body: ', req.body);
+  // Call Mongoose create method, passing in data from the request
   Activity.create(req.body, function(err, data) {
-    console.log('data: ', data);
-    res.json(data);
+    if(err) {
+      console.log('Error: ', err);
+    } else {
+      res.json(data);
+    }
   });
 });
 
+// Set up DELETE request listener from deleting an activity
 app.delete('/api/activities', function(req, res) {
   console.log('Server DELETE req.body: ', req.body);
+  // Call Mongoose remove method on id matching the request
   Activity.remove({
     '_id': req.body._id
   }, function( err, removed) {
     if (err) {
-      console.log('Error!');
+      console.log('Error: ', err);
     } else {
-      // console.log('Server DELETE response: ', removed);
       res.send(removed);
     }
   });
