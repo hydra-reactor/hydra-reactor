@@ -1,4 +1,4 @@
-angular.module('loginSplash', ['ngRoute', 'loginModule', 'signupModule', 'hydraApp'])
+angular.module('loginSplash', ['ngRoute', 'loginModule', 'signupModule', 'hydraApp', 'tripViewModule'])
 
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
@@ -13,6 +13,10 @@ angular.module('loginSplash', ['ngRoute', 'loginModule', 'signupModule', 'hydraA
   .when('/listview', {
     templateUrl: 'list-view.html',
     controller: 'activityController'
+  })
+  .when('/tripview', {
+    templateUrl: 'tripview/tripview.html',
+    controller: 'tripViewController'
   })
   .otherwise({
     redirectTo: '/login'
