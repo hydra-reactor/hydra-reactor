@@ -1,32 +1,35 @@
-<div ng-controller='loginController'>
+<div ng-controller="loginController">
+
   <form class="form-horizontal">
-  <div class="form-group">
-    <label for="inputUsername" class="username-input"></label>
-    <div class="col-sm-10">
-      <input type="username" class="form-control" id="login-username" placeholder="Username">
+    <div class="form-group">
+      <label for="inputUsername" class="username-input"></label>
+      <div class="col-sm-10">
+        <input type="username" class="form-control" id="login-username" placeholder="Username">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword" class="password-input"></label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    <div class="form-group">
+      <label for="inputPassword" class="password-input"></label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
     </div>
-  </div>
-  <!-- <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox"> -->
-        <!-- <label>
-          <input type="checkbox"> Remember me
-        </label> -->
-      <!-- </div>
+    <!-- Remember Me button not used/implemented, but saved for later. -->
+    <!-- <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox"> -->
+          <!-- <label>
+            <input type="checkbox"> Remember me
+          </label> -->
+        <!-- </div>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <div class="form-submit-button">
+        <button type="submit" class="btn-form">Login</button>
+      </div>
     </div>
-  </div> -->
-  <div class="form-group">
-    <div class="form-submit-button">
-      <button type="submit" class="btn form">Login</button>
-    </div>
-  </div>
   </form>
+
   <div class="form-group2">don't have an account? sign up now.
     <div>
       <form method="link" action="#/signup">
