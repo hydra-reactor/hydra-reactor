@@ -1,5 +1,28 @@
-#hero {
-  background: url(caribbean.jpeg) no-repeat center top;
+body {
+  background-color: #2c5d7f;
+  margin: 0;
+  padding-left: 0;
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Aclonica', sans-serif;
+  color: white;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  top: 0px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+  top: 65px;
 }
 
 form {
@@ -76,24 +99,12 @@ body {
   background-color: #2c5d7f;
 }
 
+#hero {
+  background: url(caribbean.jpeg) no-repeat center top;
+}
+
 .hero-banner {
   text-align: center;
-}
-
-h1 {
-  font-family: 'Aclonica', sans-serif;
-  color: white;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.logo {
-  max-width: 12%;
-  max-height: 12%;
-  display: inline-block;
-  margin: 0 auto;
-  position: relative;
-  top: 50px;
 }
 
 .form-group {
@@ -110,16 +121,7 @@ h1 {
   margin-right: auto;
   left: 0;
   right: 0;
-  top: 550px;
-}
-
-footer {
-  font-family: 'Aclonica', sans-serif;
-  color: white;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  bottom: 10;
+  top: 600px;
 }
 
 .col-sm-offset-2 {
@@ -133,10 +135,26 @@ footer {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   color: white;
+  border-radius: 5px;
 }
 
-/*.form-submit-button {
-  width: 100px;
-  height: 50px
+.btn-form {
+  background-color: #438bbf;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
 }
-*/
+
+.footer {
+  font-family: 'Aclonica', sans-serif;
+  color: white;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  bottom: -600px;
+}
+
