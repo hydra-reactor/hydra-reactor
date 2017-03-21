@@ -3,26 +3,20 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
 var User = require('./user-model.js');
-
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // mongoose.connect('mongodb://heroku_0fn1fg98:vi2sk4eagfo3dj3pbg1407vr0l@ds133450.mlab.com:33450/heroku_0fn1fg98/hydra');
 mongoose.connect('mongodb://localhost/hydra');
 var db = mongoose.connection;
-
 app.use(express.static(path.join(__dirname, '../client/')));
-
 var testSignup = {
   "email": "user@email.com",
   "password": "password123"
 }
-
 var testSignin = {
   "email": "user@email.com"
 }
-
 var testTrip = {
   "user_id": "",  // Need to update with database data
   "trip": {
@@ -30,24 +24,21 @@ var testTrip = {
     "numDays": 3
   }
 }
-
 var testActivityAdd = {
-	"user_id": "", // Need to update with database data
-	"trip_id": "", // Need to update with database data
-	"day_id": "", // Need to update with database data
+    "user_id": "", // Need to update with database data
+    "trip_id": "", // Need to update with database data
+    "day_id": "", // Need to update with database data
   "activity": {
     "description": "Eat delicious pizza",
     "category": "Food"
   }
 }
-
 var testActivityDelete = {
-	"user_id": "", // Need to update with database data
-	"trip_id": "", // Need to update with database data
-	"day_id": "", // Need to update with database data
+    "user_id": "", // Need to update with database data
+    "trip_id": "", // Need to update with database data
+    "day_id": "", // Need to update with database data
   "activity_id": "" // Need to update with database data
 }
-
 // Set up POST request listener for creating a new user
 // Expects to receive email and password in req.body
 app.post('/api/signup', function(req, res) {
@@ -61,7 +52,6 @@ app.post('/api/signup', function(req, res) {
     }
   });
 });
-
 // Set up POST request listener for signing in a user
 // Expects to receive a user_id in req.body
 app.post('/api/signin', function(req, res) {
@@ -77,7 +67,6 @@ app.post('/api/signin', function(req, res) {
     }
   });
 });
-
 // Set up POST request listener for creating a new trip
 // Expects to receive user_id and trip in req.body, where trip is an object with tripName and numDays properties
 app.post('/api/trips', function(req, res) {
@@ -105,7 +94,6 @@ app.post('/api/trips', function(req, res) {
     }
   });
 });
-
 // Set up POST request listener for creating a new activity
 // Expects to receive user_id, trip_id, days_id, and activity in req.body,
 // where activity is an object with description and category properties
@@ -122,7 +110,6 @@ app.post('/api/activities', function(req, res) {
     }
   });
 });
-
 // Set up DELETE request listener for deleting an activity
 // Expects to receive user_id, trip_id, days_id, and activity_id in req.body
 app.delete('/api/activities', function(req, res) {
@@ -140,10 +127,8 @@ app.delete('/api/activities', function(req, res) {
     }
   });
 });
-
 var port = process.env.PORT || 3000;
 // var ip = process.env.IP || 'localhost';
-
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 });

@@ -17,7 +17,8 @@ var TripSchema = new Schema({
 });
 
 var UserSchema = new Schema({
-  email: {
+  username: {
+
     type: String,
     required: true,
     unique: true
@@ -33,3 +34,4 @@ var User = mongoose.model('User', UserSchema);
 console.log('User: ', User);
 
 module.exports = User;
+
