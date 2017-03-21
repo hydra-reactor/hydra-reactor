@@ -14,7 +14,7 @@ var db = mongoose.connection;
 
 app.use(express.static(path.join(__dirname, '../client/')));
 
-//Set up GET request listener for retrieiving activities
+//Set up GET request listener for retrieving links
 app.get('/api/activities', function(req, res) {
   console.log('Server GET req.body: ', req.body);
   // Call Mongoose find method to retrieve all activities
