@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
+
 var User = require('./user-model.js');
+
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -129,6 +131,7 @@ app.delete('/api/activities', function(req, res) {
     }
   });
 });
+
 var port = process.env.PORT || 3000;
 // var ip = process.env.IP || 'localhost';
 app.listen(port, function() {
