@@ -64,7 +64,7 @@ app.post('/api/signin', function(req, res) {
   console.log('Received the following GET request for a user: ', req.body);
   // Mongoose method to retrieve a user
   User.findOne({
-    'username': req.body.email
+    'email': req.body.email
   }, function(err, data) {
     if(err) {
       console.log('Error: ', err)
@@ -88,7 +88,7 @@ app.post('/api/trips', function(req, res) {
       var day = data.trips[data.trips.length - 1].days;
       for(var i = 1; i <= req.body.trip.numDays; i++) {
         var dayObject = { dayNum: i };
-        User.findOneAndUpdate({'_id': req.body.user_id, 'trips._id': trip_id}, {$push: { 'trips.$.days': dayObject } }, function(err, data) {
+        User.findOneAndUpdate({'_id': req.body.user_id, 'trips._id': trip_id}, {$push: { 'trips.$.days': dayObject } }, {new: true}, function(err, data) {
           if(err) {
             console.log('Error: ', err);
           }
