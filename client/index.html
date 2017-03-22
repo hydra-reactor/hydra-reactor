@@ -1,24 +1,30 @@
-<html>
- <head>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" type="text/css" href="styles.css"/>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.min.js"></script>
- </head>
- <body ng-app="loginSplash">
-  <div class="hero-banner">
-    <h1>hydra</h1><img class="logo" src="hydra-travel.png"><h1>travel</h1>
-  </div>
-  <div ng-view></div>
-  <footer>hail hydra, one trip at a time.</footer>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.min.js"></script>
+  </head>
+  <body ng-app="loginSplash">
+    <div class="hero-banner">
+      <h1>hydra</h1><img class="logo" src="hydra-travel.png"><h1>travel</h1>
+    </div>
+    <div ng-view></div>
+    <div class="footer">
+      <footer>hail hydra, one trip at a time.</footer>
+    </div>
   <script src="routes.js"></script>
   <script src="login/login-controller.js"></script>
   <script src="signup/signup-controller.js"></script>
   <script src="tripview/tripViewController.js"></script>
   <script src="app.js"></script>
- </body>
+  </body>
 </html>
