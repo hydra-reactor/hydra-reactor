@@ -1,7 +1,14 @@
 var app = angular.module('hydraApp', []);
 app.factory('User', function($http) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
-  var userData = {};
+  var userData = {
+    __v: 0,
+    _id: "58d454a78efbe86ece987a29",
+    email: "boinds@gmail.com",
+    password: "ekbneskehshasa",
+    trips: "[]"
+  };  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
+
   //get request to pull in user info
   var newSignUp = function(email, password) {
     console.log('newSignUp is getting invoked!');
@@ -26,13 +33,91 @@ app.factory('User', function($http) {
       });
 
   };
-  return {
-    userData: userData,
-    newSignUp: newSignUp
-//     deleteActivity: deleteActivity
+
+  var signIn = function(email){
+    console.log('signIn is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/signin',
+      data: {
+        "email": email
+      }
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        console.log('signIn success');
+        console.dir(response);
+        console.log('the returned data is:' + response.data);
+        userData = response.data;
+        console.log(userData);
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
   };
 
-  var newTrip = function() {};
+  var newTrip = function(user_id, tripName, days) {
+    console.log('newTrip is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/trips',
+      data: {
+        "user_id": user_id,  // Need to update with database data
+        "trip": {
+          "tripName": tripName,
+          "numDays": days
+        }
+      }
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        console.log('newTrip success');
+        console.dir(response);
+        console.log('the returned data is:' + response.data);
+        userData = response.data;
+        console.log(userData);
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
+
+  };
+
+  var newActivity = function(user_id, trip_id, day_id, description, category) {
+    console.log('newActivity is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/activities',
+      data: {
+        "user_id": user_id,
+        "trip_id": trip_id,
+        "day_id": day_id,
+        "activity": {
+          "description": description,
+          "category": category
+        }
+      }
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        console.log('newActivity success');
+        console.dir(response);
+        console.log('the returned data is:' + response.data);
+        userData = response.data;
+        console.log(userData);
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
+  };
+
+  return {
+    userData: userData,
+    newSignUp: newSignUp,
+    newTrip: newTrip,
+    newActivity: newActivity,
+    signIn: signIn
+  };
 });
 
 
@@ -118,5 +203,5 @@ app.factory('User', function($http) {
 // use ng-repeat on the index.html page to display each item in storage
 
 
-});
+// });
 

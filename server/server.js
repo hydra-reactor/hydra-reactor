@@ -11,14 +11,14 @@ mongoose.connect('mongodb://localhost/hydra');
 var db = mongoose.connection;
 app.use(express.static(path.join(__dirname, '../client/')));
 
-var testSignup = {
-  "email": "user@email.com",
-  "password": "password123"
-};
-
-// var testSignin = {
-//   "email": "user@email.com"
+// var testSignup = {
+//   "email": "user@email.com",
+//   "password": "password123"
 // };
+
+var testSignin = {
+  "email": "user@email.com"
+};
 // var testTrip = {
 //   "user_id": "",  // Need to update with database data
 //   "trip": {
