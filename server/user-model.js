@@ -7,13 +7,12 @@ var ActivitySchema = new Schema({
 });
 
 var DaySchema = new Schema({
-  dayNum: Number,
+  day: Number,
   activities: [ActivitySchema]
 });
 
 var TripSchema = new Schema({
   tripName: String,
-  numDays: Number,
   days: [DaySchema]
 });
 
