@@ -6,13 +6,13 @@
     </div>
     <div class="form-group">
       <!-- <label for="exampleInputPassword1">Password</label> -->
-      <input type="password" class="form-control" id="examplePassword" placeholder="Password">
+      <input type="password" class="form-control" id="examplePassword" placeholder="Password" ng-model='password'>
     </div>
     <div class="form-group">
       <!-- <label for="exampleInputPassword1">Password</label> -->
-      <input type="email" class="form-control" id="exampleEmail" placeholder="Email">
+      <input type="email" class="form-control" id="exampleEmail" placeholder="Email" ng-model='email'>
     </div>
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" class="btn" ng-click="newSignUp(email, password)">Submit</button>
   </form>
   <div class="login-text">already have an account? sign in.
     <div class="login-link">
