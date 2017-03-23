@@ -17,28 +17,31 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
+  > The Hydra Travel Planner
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > The best way to collect and organize ideas for your upcoming trip.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > The Hydra Travel Planner is a fantastic way to collect ideas for your trip and organize them into separate todo lists for each day of your trip. Create and save multiple trips, each organized with their own todo lists that are broken down by category, such as food, exercise, and nightlife.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > There are many todo apps, but most do not focus exclusively on planning trips. There are many travel planners, but many are overly complicated and are primarily focused on scheduling activities into specific time slots, which isn't ideal early on in the planning phase.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > The Hydra Travel Planner is a simple travel planner that is incredibly easy to use. As you think of ideas for your upcoming trip, just add them to your list for a given day. Everything stays neatly organized and easy to access while you're on your trip.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > We are very excited to be launching the Hydra Travel Planner. It is a fantastic way to gather and organize ideas for your next trip.
+
+  ~ Darin Allen, Product Owner of the Hydra Travel Planner
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > To get started, just visit the Hydra Travel Planner website today and create an account. From there, you can create a new trip and start adding activities.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+> The Hydra Travel Planner saved me on our recent family trip. I came across a lot of great ideas while researching restaurants and excursions, and the Hydra Travel Planner ensured I didn't miss out on anything due to my own forgetfulness!
+
+  ~ Joe Customer
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > To learn more, check out the Hydra Travel Planner website now!
