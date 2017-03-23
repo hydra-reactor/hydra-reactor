@@ -1,6 +1,6 @@
 
 
-angular.module('hydraApp', []).controller('activityController', ['$scope', '$http', 'User', function($scope, $http, User) {
+angular.module('loginModule', ['hydraApp']).controller('loginController', ['$scope', '$http', 'User', function($scope, $http, User) {
   $scope.email = '';
   $scope.password = '';
   $scope.newSignUp = User.newSignUp;

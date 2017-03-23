@@ -6,18 +6,20 @@ app.factory('User', function($http) {
   var userData = {};
   //get request to pull in user info
   var newSignUp = function(email, password) {
+    console.log('newSignUp is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/signup',
       data: {
-        email: email,
-        password: password
+        "email": email,
+        "password": password
       }
     };
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
         console.log('newSignUp success');
+        console.log('the returned data is:' + response.data);
         userData = response.data;
       }, function errorCallback(error) {
         console.log('error!');
@@ -32,11 +34,11 @@ app.factory('User', function($http) {
 
 });
 
-app.controller('activityController', ['$scope', '$http', 'User', function($scope, $http, User) {
-  $scope.email = '';
-  $scope.password = '';
-  $scope.newSignUp = User.newSignUp;
-}]);
+// app.controller('activityController', ['$scope', '$http', 'User', function($scope, $http, User) {
+//   $scope.email = '';
+//   $scope.password = '';
+//   $scope.newSignUp = User.newSignUp;
+// }]);
 
 
 // app.factory('Activities', function($http) {
