@@ -17,7 +17,7 @@ var TripSchema = new Schema({
 });
 
 var UserSchema = new Schema({
-  username: {
+  email: {
 
     type: String,
     required: true,
