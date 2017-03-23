@@ -18,6 +18,10 @@ angular.module('loginSplash', ['ngRoute', 'loginModule', 'signupModule', 'hydraA
     templateUrl: 'tripview/tripview.html',
     controller: 'tripViewController'
   })
+  .when('/tripcreator', {
+    templateUrl: 'tripcreator/tripCreator.html',
+    controller: 'tripCreatorController'
+  })
   .otherwise({
     redirectTo: '/login'
   });
