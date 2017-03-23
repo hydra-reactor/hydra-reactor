@@ -17,7 +17,6 @@ app.factory('User', function($http) {
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
         console.log('newSignUp success');
-        console.dir(response);
         console.log('the returned data is:' + response.data);
         userData = response.data;
         console.log(userData);
