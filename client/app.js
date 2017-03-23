@@ -31,6 +31,7 @@ app.factory('User', function($http) {
     newSignUp: newSignUp
 //     deleteActivity: deleteActivity
   };
+
   var newTrip = function() {};
 });
 
@@ -115,3 +116,7 @@ app.factory('User', function($http) {
 //   $http.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
 // }]);
 // use ng-repeat on the index.html page to display each item in storage
+
+
+});
+
