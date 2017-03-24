@@ -79,7 +79,11 @@ app.factory('User', function($http) {
   };
 
 
+<<<<<<< HEAD
   var newActivity = function(user_id, trip_id, description, category) {
+=======
+  var newActivity = function(user_id, trip_id, day_id, description, category) {
+>>>>>>> 180fa012880e436cbda4eec08cdcdef888a04696
     console.log('newActivity is getting invoked!');
     var req = {
       method: 'POST',
@@ -118,8 +122,11 @@ app.factory('User', function($http) {
   };
 });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 180fa012880e436cbda4eec08cdcdef888a04696
 // app.factory('Activities', function($http) {
 //   // Function to post a new activity to the database
   // var postNewData = function(description, category, storage) {
