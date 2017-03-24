@@ -83,6 +83,7 @@ app.factory('User', function($http) {
 
   };
 
+
   var newActivity = function(user_id, trip_id, day_id, description, category) {
     console.log('newActivity is getting invoked!');
     var req = {
@@ -119,7 +120,6 @@ app.factory('User', function($http) {
     signIn: signIn
   };
 });
-
 
 // app.factory('Activities', function($http) {
 //   // Function to post a new activity to the database
