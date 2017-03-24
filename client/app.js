@@ -49,7 +49,7 @@ app.factory('User', function($http) {
       });
   };
 
-  var newTrip = function(user_id, tripName, days) {
+  var newTrip = function(user_id, tripName) {
     console.log('newTrip is getting invoked!');
     var req = {
       method: 'POST',
@@ -60,8 +60,7 @@ app.factory('User', function($http) {
       data: {
         "user_id": user_id,  // Need to update with database data
         "trip": {
-          "tripName": tripName,
-          "numDays": days
+          "tripName": tripName
         }
       }
     };
@@ -79,7 +78,7 @@ app.factory('User', function($http) {
 
   };
 
-  var newActivity = function(user_id, trip_id, day_id, description, category) {
+  var newActivity = function(user_id, trip_id, description, category) {
     console.log('newActivity is getting invoked!');
     var req = {
       method: 'POST',
@@ -90,7 +89,6 @@ app.factory('User', function($http) {
       data: {
         "user_id": user_id,
         "trip_id": trip_id,
-        "day_id": day_id,
         "activity": {
           "description": description,
           "category": category
