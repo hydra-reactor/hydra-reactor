@@ -1,5 +1,5 @@
 var app = angular.module('hydraApp', []);
-app.factory('User', function($http) {
+app.factory('User', function($http, $window) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
   var userData = {
     __v: 0,
@@ -25,6 +25,7 @@ app.factory('User', function($http) {
       .then(function successCallback(response) {
         userData = response.data;
         localStorage.setItem('auth', response.data.tokens[0].token)
+        $window.location.href = '#/tripview.html';
       }, function errorCallback(error) {
         console.log('error!');
       });
@@ -44,6 +45,7 @@ app.factory('User', function($http) {
         userData = response.data;
         localStorage.setItem('auth', response.data.tokens[0].token)
         console.log(userData);
+        $window.location.href = '#/tripview.html';
       }, function errorCallback(error) {
         console.log('error!');
       });
