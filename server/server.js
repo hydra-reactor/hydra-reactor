@@ -77,7 +77,7 @@ app.delete('/api/token', authenticate, (req, res) => {
 });
 
 // Set up POST request listener for creating a new trip
-// Expects to receive user_id and trip in req.body, where trip is an object with tripName and numDays properties
+// Expects to receive user_id and trip in req.body, where trip is an object with a tripName property
 app.post('/api/trips', authenticate, function(req, res) {
   console.log('Received the following POST request to create a trip: ', req.body);
   // Mongoose method to retrieve and update a user
@@ -85,35 +85,43 @@ app.post('/api/trips', authenticate, function(req, res) {
     if(err) {
       console.log('Error: ', err);
     } else {
+      res.json(user);
+
+      // Commented out code that incorporated day schema
       // Create a new day object in the days array for each day in numDays
-      var trip_id = user.trips[user.trips.length - 1]['_id'];
-      for(var i = 1; i <= req.body.trip.numDays; i++) {
-        var dayObject = { day: i };
-        User.findOneAndUpdate({'_id': req.body.user_id, 'trips._id': trip_id}, {$push: { 'trips.$.days': dayObject } }, {new: true}, function(err, user) {
-          if(err) {
-            console.log('Error: ', err);
-          } else {
-            // if all iterations are complete, respond with the updated user data
-            if(user.trips.id(trip_id).days.length === req.body.trip.numDays) {
-              res.json(user);
-            }
-          }
-        });
-      }
+      // var trip_id = user.trips[user.trips.length - 1]['_id'];
+      // for(var i = 1; i <= req.body.trip.numDays; i++) {
+      //   var dayObject = { day: i };
+      //   User.findOneAndUpdate({'_id': req.body.user_id, 'trips._id': trip_id}, {$push: { 'trips.$.days': dayObject } }, {new: true}, function(err, user) {
+      //     if(err) {
+      //       console.log('Error: ', err);
+      //     } else {
+      //       // if all iterations are complete, respond with the updated user data
+      //       if(user.trips.id(trip_id).days.length === req.body.trip.numDays) {
+      //         res.json(user);
+      //       }
+      //     }
+      //   });
+      // }
+
     }
   });
 });
 // Set up POST request listener for creating a new activity
-// Expects to receive user_id, trip_id, days_id, and activity in req.body,
+// Expects to receive user_id, trip_id, and activity in req.body,
 // where activity is an object with description and category properties
 app.post('/api/activities', authenticate, function(req, res) {
-  // Pass in request object that includes user id, trip object id, day object id, activity object
+  // Pass in request object that includes user id, trip object id, activity object
   console.log('Received the following POST request to create an activity: ', req.body);
   User.findById(req.body.user_id, function(err, user) {
     if(err) {
       console.log('Error: ', error);
     } else {
-      user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities.push(req.body.activity);
+
+      // Commented out version with day schema
+      // user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities.push(req.body.activity);
+
+      user.trips.id(req.body.trip_id).activities.push(req.body.activity);
       user.save();
       res.json(user);
     }
@@ -121,7 +129,7 @@ app.post('/api/activities', authenticate, function(req, res) {
 });
 
 // Set up DELETE request listener for deleting an activity
-// Expects to receive user_id, trip_id, days_id, and activity_id in req.body
+// Expects to receive user_id, trip_id, and activity_id in req.body
 app.delete('/api/activities', authenticate, function(req, res) {
   console.log('Received the following DELETE request to delete an activity', req.body);
   // Call Mongoose remove method on id matching the request
@@ -130,7 +138,11 @@ app.delete('/api/activities', authenticate, function(req, res) {
       console.log('Error: ', error);
     } else {
       // The following code splices an individual activity out of the activities array
-      var activities = user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities;
+
+      // Commented out version with day schema
+      // var activities = user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities;
+
+      var activities = user.trips.id(req.body.trip_id).activities;
       activities.splice(activities.indexOf(activities.id(req.body.activity_id)), 1);
       user.save();
       res.json(user);

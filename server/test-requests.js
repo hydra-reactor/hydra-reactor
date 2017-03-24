@@ -18,18 +18,16 @@
 {
   "user_id": "",
   "trip": {
-    "tripName": "Hawaii Vacation",
-    "numDays": 3
+    "tripName": "Hawaii Vacation"
   }
 }
 
 // POST request to /api/activities
-// You will need to update user_id, trip_id, and day_id with
+// You will need to update user_id and trip_id with
 // _id values from the database
 {
   "user_id": "",
   "trip_id": "",
-  "day_id": "",
   "activity": {
     "description": "Eat delicious pizza",
     "category": "Food"
@@ -37,11 +35,10 @@
 }
 
 // DELETE request to /api/activities
-// You will need to update user_id, trip_id, day_id, and activity_id
+// You will need to update user_id, trip_id, and activity_id
 // with _id values from the database
 {
   "user_id": "",
   "trip_id": "",
-  "day_id": "",
   "activity_id": ""
 }

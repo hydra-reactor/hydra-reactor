@@ -12,14 +12,20 @@ var ActivitySchema = new Schema({
   category: String
 });
 
-var DaySchema = new Schema({
-  day: Number,
-  activities: [ActivitySchema]
-});
+// Commented versions that include Day schema
+// var DaySchema = new Schema({
+//   day: Number,
+//   activities: [ActivitySchema]
+// });
+//
+// var TripSchema = new Schema({
+//   tripName: String,
+//   days: [DaySchema]
+// });
 
 var TripSchema = new Schema({
   tripName: String,
-  days: [DaySchema]
+  activities: [ActivitySchema]
 });
 
 var UserSchema = new Schema({
