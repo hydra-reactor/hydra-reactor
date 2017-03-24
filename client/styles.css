@@ -192,7 +192,9 @@ div.login-link {
   top: 0px;
 }
 #exampleTripName {
-  width: 400px;
+  position: relative;
+  right: 83px;
+  width: 390px;
 }
 .trip-button {
   position: relative;
