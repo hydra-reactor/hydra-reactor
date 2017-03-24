@@ -23,15 +23,12 @@ h1 {
   position: relative;
   top: 65px;
 }
-form {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  text-align: center;
+.activity-group {
+  position: relative;
+  top: 140px;
 }
-input {
-  height: 50px;
-  width: 200px;
-  font-size: 35px;
+#activity-name {
+  width: 250px;
 }
 .list-group-item {
   cursor: pointer;
