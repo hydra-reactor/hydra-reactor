@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
-
 var User = require('./user-model.js');
 
 var app = express();
@@ -107,6 +106,10 @@ app.post('/api/activities', function(req, res) {
   User.findById(req.body.user_id, function(err, user) {
     if(err) {
       console.log('Error: ', error);
+<<<<<<< 6dfe73150206e5eb87b0ddbc3ff142f57bfa9c96
+    } else {
+      user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities.push(req.body.activity);
+=======
     } else {
       user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities.push(req.body.activity);
       user.save();
@@ -126,12 +129,33 @@ app.delete('/api/activities', function(req, res) {
       // The following code splices an individual activity out of the activities array
       var activities = user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities;
       activities.splice(activities.indexOf(activities.id(req.body.activity_id)), 1);
+>>>>>>> Sync server.js
+      user.save();
+      res.json(user);
+    }
+  });
+});
+<<<<<<< 6dfe73150206e5eb87b0ddbc3ff142f57bfa9c96
+// Set up DELETE request listener for deleting an activity
+// Expects to receive user_id, trip_id, days_id, and activity_id in req.body
+app.delete('/api/activities', function(req, res) {
+  console.log('Received the following DELETE request to delete an activity', req.body);
+  // Call Mongoose remove method on id matching the request
+  User.findById(req.body.user_id, function(err, user) {
+    if(err) {
+      console.log('Error: ', error);
+    } else {
+      // The following code splices an individual activity out of the activities array
+      var activities = user.trips.id(req.body.trip_id).days.id(req.body.day_id).activities;
+      activities.splice(activities.indexOf(activities.id(req.body.activity_id)), 1);
       user.save();
       res.json(user);
     }
   });
 });
 
+=======
+>>>>>>> Sync server.js
 var port = process.env.PORT || 3000;
 // var ip = process.env.IP || 'localhost';
 app.listen(port, function() {
