@@ -2,13 +2,34 @@ var app = angular.module('hydraApp', []);
 app.factory('User', function($http, $window) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
   var userData = {
-    __v: 0,
-    _id: "58d454a78efbe86ece987a29",
-    email: "boinds@gmail.com",
-    password: "ekbneskehshasa",
-    trips: "[]"
+    user_id: '1234567',
+    trips: [{
+      trip_id: '123',
+      tripName: 'Hawaii Vacation',
+      activities: [
+      {
+        activity_id: '32hhwhaseh',
+        description: 'Eat Delicious Pizza',
+        category: 'Food'
+      }, {
+        activity_id: 'bhwh2hdhsh',
+        description: 'Go Dancing',
+        category: 'Nightlife'
+      }, {
+        activity_id: 'bh3hw2shae',
+        description: 'Surf',
+        category: 'Exercise'
+      }
+      ]
+    },
+    {
+      trip_id: '456',
+      tripName: 'Vegas Vacaction',
+      activities: []
+    }
+    ]
   };  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
-
+  var trip;
   //get request to pull in user info
   var newSignUp = function(email, password) {
     console.log('newSignUp is getting invoked!');
@@ -51,7 +72,9 @@ app.factory('User', function($http, $window) {
       });
   };
 
-  var newTrip = function(user_id, tripName) {
+
+
+var newTrip = function(user_id, tripName) {
     console.log('newTrip is getting invoked!');
     var req = {
       method: 'POST',
@@ -79,8 +102,6 @@ app.factory('User', function($http, $window) {
       });
 
   };
-
-
 
   var newActivity = function(user_id, trip_id, description, category) {
     console.log('newActivity is getting invoked!');
@@ -112,6 +133,9 @@ app.factory('User', function($http, $window) {
       });
   };
 
+
+
+
   return {
     userData: userData,
     newSignUp: newSignUp,
@@ -120,6 +144,8 @@ app.factory('User', function($http, $window) {
     signIn: signIn
   };
 });
+
+
 
 
 // app.factory('Activities', function($http) {

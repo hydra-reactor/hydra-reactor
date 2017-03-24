@@ -212,3 +212,11 @@ div.footer {
   color: white;
 }
 
+.list-view-form {
+  display: block;
+}
+
+.list-view-activities {
+  display: block;
+  margin-top: 200px;
+}
