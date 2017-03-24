@@ -27,9 +27,9 @@
 // You will need to update user_id, trip_id, and day_id with
 // _id values from the database
 {
-  "user_id": "", // Need to update with database data
-  "trip_id": "", // Need to update with database data
-  "day_id": "", // Need to update with database data
+  "user_id": "",
+  "trip_id": "",
+  "day_id": "",
   "activity": {
     "description": "Eat delicious pizza",
     "category": "Food"
@@ -40,8 +40,8 @@
 // You will need to update user_id, trip_id, day_id, and activity_id
 // with _id values from the database
 {
-  "user_id": "", // Need to update with database data
-  "trip_id": "", // Need to update with database data
-  "day_id": "", // Need to update with database data
-  "activity_id": "" // Need to update with database data
+  "user_id": "",
+  "trip_id": "",
+  "day_id": "",
+  "activity_id": ""
 }
