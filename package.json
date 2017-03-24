@@ -4,7 +4,13 @@
   "description": "Hydra-Reactor",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
   },
+=======
+
+  },
+
+>>>>>>> 037d34389252d8f4c4125e045a3d2a63ec9ae7f1
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darinallen/hydra-reactor.git"
