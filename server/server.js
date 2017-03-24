@@ -10,43 +10,11 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 // mongoose.connect('mongodb://heroku_0fn1fg98:vi2sk4eagfo3dj3pbg1407vr0l@ds133450.mlab.com:33450/heroku_0fn1fg98/hydra');
 mongoose.connect('mongodb://localhost/hydra');
 // var db = mongoose.connection;
 
 app.use(express.static(path.join(__dirname, '../client/')));
-
-// var testSignup = {
-//   "email": "user@email.com",
-//   "password": "password123"
-// };
-
-var testSignin = {
-  "email": "user@email.com"
-};
-// var testTrip = {
-//   "user_id": "",  // Need to update with database data
-//   "trip": {
-//     "tripName": "Hawaii Vacation",
-//     "numDays": 3
-//   }
-// };
-// var testActivityAdd = {
-//   "user_id": "", // Need to update with database data
-//   "trip_id": "", // Need to update with database data
-//   "day_id": "", // Need to update with database data
-//   "activity": {
-//     "description": "Eat delicious pizza",
-//     "category": "Food"
-//   }
-// };
-// var testActivityDelete = {
-//     "user_id": "", // Need to update with database data
-//     "trip_id": "", // Need to update with database data
-//     "day_id": "", // Need to update with database data
-//   "activity_id": "" // Need to update with database data
-// };
 
 // Set up POST request listener for creating a new user
 // Expects to receive email and password in req.body
@@ -70,7 +38,6 @@ app.post('/api/signup', function(req, res) {
   //     res.json(user);
   //   }
   // });
-
 
 });
 
