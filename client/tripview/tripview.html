@@ -1,30 +1,36 @@
-<div class="cardContainer">
-  <div class="newCard">
-    <div class="cardHeader">
-      <div class="cardLogo left"> </div>
-      <div>
-        <div class="tripCardTitle">
-          <p>Disney Trip</p>
+<table ng-controller='tripViewController'>
+  <tr ng-repeat="trip in ??????">
+    <td>
+      <div class="cardContainer">
+        <div class="newCard">
+          <div class="cardHeader">
+            <div class="cardLogo left"> </div>
+            <div>
+              <div class="tripCardTitle">
+                <p>Disney Trip</p>
+              </div>
+              <div class="tripCardDescription">
+                <p>The huge family trip to Disney!</p>
+              </div>
+            </div>
+          </div>
+          <div class="cardBodyImg"></div>
+          <div class="bottomContainer">
+            <div class="cardStack">
+              <p class="left">Trip Duration: 5 Days</p>
+            </div>
+            <div class="cardNav">
+              <nav>
+                <a href="/list-view/">OPEN</a> |
+                <a href="/share/">SHARE</a>
+              </nav>
+            </div>
+          </div>
         </div>
-        <div class="tripCardDescription">
-          <p>The huge family trip to Disney!</p>
-        </div>
       </div>
-    </div>
-    <div class="cardBodyImg"></div>
-    <div class="bottomContainer">
-      <div class="cardStack">
-        <p class="left">Trip Duration: 5 Days</p>
-      </div>
-      <div class="cardNav">
-        <nav>
-          <a href="/list-view/">OPEN</a> |
-          <a href="/share/">SHARE</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
+    </td>
+  </tr>
+</table>
 <div class="cardContainer">
   <div class="newCard">
     <div class="cardHeader">
