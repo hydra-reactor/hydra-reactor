@@ -23,33 +23,26 @@ app.factory('User', function($http) {
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        console.log('newSignUp success');
-        console.dir(response);
-        console.log('the returned data is:' + response.data);
         userData = response.data;
-        console.log(userData);
+        localStorage.setItem('auth', response.data.tokens[0].token)
       }, function errorCallback(error) {
         console.log('error!');
       });
 
   };
 
-  var signIn = function(email){
+  var signIn = function(email, password){
     console.log('signIn is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/signin',
-      data: {
-        "email": email
-      }
+      data: {email, password}
     };
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        console.log('signIn success');
-        console.dir(response);
-        console.log('the returned data is:' + response.data);
         userData = response.data;
+        localStorage.setItem('auth', response.data.tokens[0].token)
         console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
@@ -61,6 +54,9 @@ app.factory('User', function($http) {
     var req = {
       method: 'POST',
       url: '/api/trips',
+      headers: {
+        'x-auth': localStorage.getItem('auth')
+      },
       data: {
         "user_id": user_id,  // Need to update with database data
         "trip": {
@@ -74,7 +70,7 @@ app.factory('User', function($http) {
       .then(function successCallback(response) {
         console.log('newTrip success');
         console.dir(response);
-        console.log('the returned data is:' + response.data);
+        console.log('the returned data is:', response.data);
         userData = response.data;
         console.log(userData);
       }, function errorCallback(error) {
@@ -88,6 +84,9 @@ app.factory('User', function($http) {
     var req = {
       method: 'POST',
       url: '/api/activities',
+      headers: {
+        'x-auth': localStorage.getItem('auth')
+      },
       data: {
         "user_id": user_id,
         "trip_id": trip_id,
@@ -103,7 +102,7 @@ app.factory('User', function($http) {
       .then(function successCallback(response) {
         console.log('newActivity success');
         console.dir(response);
-        console.log('the returned data is:' + response.data);
+        console.log('the returned data is:', response.data);
         userData = response.data;
         console.log(userData);
       }, function errorCallback(error) {
@@ -204,4 +203,3 @@ app.factory('User', function($http) {
 
 
 // });
-

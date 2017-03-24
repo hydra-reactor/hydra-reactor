@@ -28,6 +28,7 @@ npm-debug.log
 db/
 client/lib
 compiled/
+bak/
 
 # Floobits
 .floo
