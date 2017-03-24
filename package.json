@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darinallen/hydra-reactor.git"
@@ -16,10 +17,12 @@
   },
   "homepage": "https://github.com/darinallen/hydra-reactor#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.0",
     "path": "^0.12.7",
-    "request": "^2.81.0"
+    "validator": "^7.0.0"
   }
 }

@@ -1,42 +1,150 @@
 var app = angular.module('hydraApp', []);
-
 app.factory('User', function($http) {
-
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
-  var userData = {};
+  var userData = {
+    user_id: '1234567',
+    trips: [{
+      trip_id: '123',
+      tripName: 'Hawaii Vacation',
+      activities: [
+      {
+        activity_id: '32hhwhaseh',
+        description: 'Eat Delicious Pizza',
+        category: 'Food'
+      }, {
+        activity_id: 'bhwh2hdhsh',
+        description: 'Go Dancing',
+        category: 'Nightlife'
+      }, {
+        activity_id: 'bh3hw2shae',
+        description: 'Surf',
+        category: 'Exercise'
+      }
+      ]
+    },
+    {
+      trip_id: '456',
+      tripName: 'Vegas Vacaction',
+      activities: []
+    }
+    ]
+  };  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
+  var trip;
   //get request to pull in user info
   var newSignUp = function(email, password) {
+    console.log('newSignUp is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/signup',
       data: {
-        email: email,
-        password: password
+        "email": email,
+        "password": password
       }
     };
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        console.log('newSignUp success');
         userData = response.data;
+        localStorage.setItem('auth', response.data.tokens[0].token)
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
+
+  };
+
+  var signIn = function(email, password){
+    console.log('signIn is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/signin',
+      data: {email, password}
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        userData = response.data;
+        localStorage.setItem('auth', response.data.tokens[0].token)
+        console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
       });
   };
 
-  return {
-    userData: userData,
-    newSignUp: newSignUp
-//     deleteActivity: deleteActivity
+
+
+var newTrip = function(user_id, tripName) {
+    console.log('newTrip is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/trips',
+      headers: {
+        'x-auth': localStorage.getItem('auth')
+      },
+      data: {
+        "user_id": user_id,  // Need to update with database data
+        "trip": {
+          "tripName": tripName
+        }
+      }
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        console.log('newTrip success');
+        console.dir(response);
+        console.log('the returned data is:', response.data);
+        userData = response.data;
+        console.log(userData);
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
+
   };
 
+
+  var newActivity = function(user_id, trip_id, description, category) {
+    console.log('newActivity is getting invoked!');
+    var req = {
+      method: 'POST',
+      url: '/api/activities',
+      headers: {
+        'x-auth': localStorage.getItem('auth')
+      },
+      data: {
+        "user_id": user_id,
+        "trip_id": trip_id,
+        "activity": {
+          "description": description,
+          "category": category
+        }
+      }
+    };
+    $http(req)
+      // the following will be called asynchronously when the response is available
+      .then(function successCallback(response) {
+        console.log('newActivity success');
+        console.dir(response);
+        console.log('the returned data is:', response.data);
+        userData = response.data;
+        console.log(userData);
+      }, function errorCallback(error) {
+        console.log('error!');
+      });
+  };
+
+
+
+
+  return {
+    userData: userData,
+    newSignUp: newSignUp,
+    newTrip: newTrip,
+    newActivity: newActivity,
+    signIn: signIn
+  };
 });
 
-app.controller('activityController', ['$scope', '$http', 'User', function($scope, $http, User) {
-  $scope.email = '';
-  $scope.password = '';
-  $scope.newSignUp = User.newSignUp;
-}]);
+
 
 
 // app.factory('Activities', function($http) {
@@ -119,3 +227,6 @@ app.controller('activityController', ['$scope', '$http', 'User', function($scope
 //   $http.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
 // }]);
 // use ng-repeat on the index.html page to display each item in storage
+
+
+// });

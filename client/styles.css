@@ -191,6 +191,21 @@ div.login-link {
 .login-button {
   top: 0px;
 }
+#exampleTripName {
+  position: relative;
+  right: 83px;
+  width: 390px;
+}
+.trip-button {
+  position: relative;
+  top: 150px;
+  margin: 0px auto;
+  width: 225px;
+  background-color: #438bbf;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 16px;
+}
 div.footer {
   position: relative;
   text-align: center;
@@ -201,3 +216,11 @@ div.footer {
   color: white;
 }
 
+.list-view-form {
+  display: block;
+}
+
+.list-view-activities {
+  display: block;
+  margin-top: 200px;
+}
