@@ -3,6 +3,7 @@
     <div class="form-group">
       <input type="text" class="form-control" id="exampleTripName" placeholder="Trip Name" ng-model="tripName">
     </div>
-    <button type="submit" class="btn trip-creator-btn" ng-click="newTrip(tripName); go('/tripview')">Submit</button>
+    <!-- DIMITRI: ng-click invocation of newTrip below needs to be tested -->
+    <button type="submit" class="btn trip-creator-btn" ng-click="newTrip(userData['_id'], tripName); go('/tripview')">Submit</button>
   </form>
 </div>

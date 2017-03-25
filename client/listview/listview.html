@@ -15,8 +15,8 @@
         <option value="Shopping">Shopping</option>
         <option value="Other">Other</option>
       </select>
-      <!-- TODO: ng-click="newActivity(user_id, trip_id, description, category)" -->
-      <button type="submit" class="btn btn-primary">Add Activity</button>
+      <!-- DIMITRI: ng-click invocation of newActivity below needs to be tested -->
+      <button ng-click="newActivity(userData['_id'], currentTrip.value['_id'], description, category)" type="submit" class="btn btn-primary">Add Activity</button>
     </form>
   </div>
   <div class='list-view-activities'>

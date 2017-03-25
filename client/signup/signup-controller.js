@@ -3,6 +3,7 @@ angular.module('signupModule', ['hydraApp']).controller('signupController', ['$s
   $scope.email = '';
   $scope.password = '';
   $scope.newSignUp = User.newSignUp;
+  $scope.go = User.go;
 }]);
 
 // angular.module('signupModule', [])

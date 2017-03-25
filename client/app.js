@@ -156,6 +156,10 @@ var newTrip = function(user_id, tripName) {
       });
   };
 
+// DIMITRI: This function is how we've been navigating between views. However,
+// it does not currently account for any authentication check. I have stubbed out
+// a concept for what that might look like below in the comments, but can you
+// please take a look and update this as needed?
   var go = function(path) {
     // if(isAuth) {
       $location.path(path);

@@ -6,6 +6,7 @@ angular.module('loginModule', ['hydraApp']).controller('loginController', ['$sco
   $scope.email = '';
   // $scope.password = '';
   $scope.signIn = User.signIn;
+  $scope.go = User.go;
 }]);
 
 
