@@ -34,26 +34,34 @@ h1 {
   cursor: pointer;
 }
 .cardLogo {
-  background: url(hydra-travel.png) no-repeat top center;
+  background: url(images/hydra-travel.png) no-repeat top center;
   margin: 5px;
   width: 50px;
   height: 50px;
   background-size: cover;
 }
-div.cardContainer {
+.cards {
+  text-align: center;
+  magin: 0 auto;
+}
+.cardContainer {
   position: relative;
   text-align: center;
   margin: 0 auto;
   padding: 15px;
-  top: 200px;
 }
-div.newCard {
+.newCard {
   width: 350px;
   margin: 0 auto;
   height: 350px;
-  border-style: solid;
+  border: 1px solid black;
+  border-radius: 3px;
   background-color: white;
   cursor: pointer;
+  box-shadow: 5px 5px 5px #111111;
+}
+.newCard:hover {
+  border: 2px solid blue;
 }
 .cardHeader {
   width:100%;
@@ -64,6 +72,8 @@ div.newCard {
 }
 .category-selector {
   display: inline-block;
+  margin-right: 30px;
+  margin-left: 10px;
 }
 .descCont {
   float: left;
@@ -71,7 +81,7 @@ div.newCard {
 }
 .cardBodyImg {
   float: left;
-  background: url(sunnybeach.jpg) no-repeat top center;
+  background: url(images/sunnybeach.jpg) no-repeat top center;
   width: 100%;
   height: 100px;
   background-size: cover;
@@ -128,7 +138,7 @@ div.newCard {
 .userButton {
   margin-top: 22%;
   margin-left: 38%;
-  background: url(userButton.png) no-repeat top center;
+  background: url(images/userButton.png) no-repeat top center;
   width: 75px;
   height: 75px;
   background-size: cover;
@@ -145,18 +155,19 @@ div.newCard {
 }
 .hero-banner {
   text-align: center;
+  height: 100px;
+  margin-bottom: 200px;
+  display: inline-block;
 }
 div.form-group {
   position: relative;
-  top: 150px;
   margin: 10px auto;
   width: 225px;
 }
 .btn {
   position: relative;
-  top: 150px;
   margin: 0px auto;
-  width: 225px;
+  width: 175px;
   background-color: #438bbf;
   font-family: 'Roboto', sans-serif;
   color: white;
@@ -221,5 +232,13 @@ div.footer {
 
 .list-view-activities {
   display: block;
-  margin-top: 200px;
+  margin-top: 100px;
+}
+
+.activity-input {
+  top: -5px;
+}
+
+.trip-creator-btn {
+  margin-top: 20px;
 }

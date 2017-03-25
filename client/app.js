@@ -3,32 +3,57 @@ app.factory('User', function($http, $window, $location) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
   var userData = {
     user_id: '1234567',
-    trips: [{
-      trip_id: '123',
-      tripName: 'Hawaii Vacation',
-      activities: [
+    trips: [
       {
-        activity_id: '32hhwhaseh',
-        description: 'Eat Delicious Pizza',
-        category: 'Food'
-      }, {
-        activity_id: 'bhwh2hdhsh',
-        description: 'Go Dancing',
-        category: 'Nightlife'
-      }, {
-        activity_id: 'bh3hw2shae',
-        description: 'Surf',
-        category: 'Exercise'
+        trip_id: '123',
+        tripName: 'Hawaii Vacation',
+        activities: [
+          {
+            activity_id: '32hhwhaseh',
+            description: 'Eat Delicious Pizza',
+            category: 'Food'
+          },
+          {
+            activity_id: 'bhwh2hdhsh',
+            description: 'Go Dancing',
+            category: 'Nightlife'
+          },
+          {
+            activity_id: 'bh3hw2shae',
+            description: 'Surf',
+            category: 'Exercise'
+          }
+        ]
+      },
+      {
+        trip_id: '456',
+        tripName: 'Vegas Vacation',
+        activities: [
+          {
+            activity_id: '2hjdsiud2',
+            description: 'All-you-can-eat buffet',
+            category: 'Food'
+          },
+          {
+            activity_id: 'fjdisunf83',
+            description: 'Watch Carrot Top Live',
+            category: 'Entertainment'
+          },
+          {
+            activity_id: 'sfjk3juf8e',
+            description: 'Bet it all on black',
+            category: 'Nightlife'
+          },
+          {
+            activity_id: 'fsnmnwifu8',
+            description: 'Continue to make poor decisions',
+            category: 'Other'
+          }
+        ]
       }
-      ]
-    },
-    {
-      trip_id: '456',
-      tripName: 'Vegas Vacaction',
-      activities: []
-    }
     ]
-  };  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
+  };
+  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
 
   //get request to pull in user info
   var newSignUp = function(email, password) {

@@ -1,14 +1,11 @@
 <div class="container" ng-controller='activityController'>
-  <header class="main-header" role="banner">
-    <img src="caribbean.jpeg"/>
-  </header>
   <div class='list-view-form'>
     <form class="form-inline">
-      <div class="form-group">
+      <div class="form-group activity-input">
         <label for="exampleInputName2"></label>
         <input type="text" ng-model='description' class="form-control" id="exampleInputName2" placeholder="Add new activity">
       </div>
-       <select class="form-control category-selector" ng-model='category'>
+      <select class="form-control category-selector" ng-model='category'>
         <option value="Food">Food</option>
         <option value="Excursion">Excursion</option>
         <option value="Nightlife">Nightlife</option>
@@ -16,14 +13,15 @@
         <option value="Entertainment">Entertainment</option>
         <option value="Relaxation">Relaxation</option>
         <option value="Shopping">Shopping</option>
+        <option value="Other">Other</option>
       </select>
       <!-- TODO: ng-click="newActivity(user_id, trip_id, description, category)" -->
-      <button type="submit" class="btn btn-primary">Add New Activity</button>
+      <button type="submit" class="btn btn-primary">Add Activity</button>
     </form>
   </div>
   <div class='list-view-activities'>
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat='item in currentTrip.value.activities track by $index' >{{item.description}} -- {{item.category}}</li>
+      <li class="list-group-item" ng-repeat='item in currentTrip.value.activities track by $index' >{{item.description}} ~ {{item.category}}</li>
     </ul>
   </div>
 </div>

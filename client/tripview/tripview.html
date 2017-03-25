@@ -1,32 +1,32 @@
-<table ng-controller='tripViewController'>
-  <tr ng-repeat="trip in userData.trips track by $index">
-    <td>
-      <div class="cardContainer">
-        <div class="newCard" ng-click="setTrip(trip); go('/listview')">
-          <div class="cardHeader">
-            <div class="cardLogo left"> </div>
-            <div>
-              <div class="tripCardTitle">
-                <p>{{ trip.tripName }}</p>
-              </div>
-              <div class="tripCardDescription">
-                <p>So relaxing  {{ currentTrip }} </p>
+
+  <div class="cards">
+    <div class="card" ng-repeat="trip in userData.trips track by $index">
+        <div class="cardContainer">
+          <div class="newCard" ng-click="setTrip(trip); go('/listview')">
+            <div class="cardHeader">
+              <div class="cardLogo left"> </div>
+              <div>
+                <div class="tripCardTitle">
+                  <p>{{ trip.tripName }}</p>
+                </div>
+                <div class="tripCardDescription">
+                  <p>So relaxing</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="cardBodyImg"></div>
-          <div class="bottomContainer">
-            <div class="cardStack">
-              <p class="left">Have a great trip!</p>
-            </div>
-            <div class="cardNav">
+            <div class="cardBodyImg"></div>
+            <div class="bottomContainer">
+              <div class="cardStack">
+                <p class="left">Have a great trip!</p>
+              </div>
+              <div class="cardNav">
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </td>
-  </tr>
-</table>
+  </div>
+
 <div class="cardContainer">
   <div class="newCard">
     <div class="cardHeader">
