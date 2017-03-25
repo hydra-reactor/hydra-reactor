@@ -242,3 +242,10 @@ div.footer {
 .trip-creator-btn {
   margin-top: 20px;
 }
+
+.trip-name {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+}
