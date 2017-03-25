@@ -1,15 +1,8 @@
-angular.module('tripViewModule', ['hydraApp']).controller('tripViewController', ['$scope', '$http', 'User', function($scope, $http, User) {
+angular.module('tripViewModule', ['hydraApp']).controller('tripViewController', ['$scope', '$location', '$http', 'User', function($scope, $location, $http, User) {
   $scope.userData = User.userData;
+  $scope.newTrip = User.newTrip;
+  $scope.user_id = $scope.userData['_id'];
+  $scope.setTrip = User.setTrip;
+  $scope.go = User.go;
   // $scope.newSignUp = User.newSignUp;
 }]);
-
-
-// angular.module('tripViewModule', [])
-
-// ng-repeat="item in userData.trips"
-
-// ng-initialize="trip=item"
-
-// .controller('tripViewController', function($scope, $http) {
-
-// })

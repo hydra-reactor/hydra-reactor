@@ -43,7 +43,6 @@ h1 {
 div.cardContainer {
   position: relative;
   text-align: center;
-  display: inline-block;
   margin: 0 auto;
   padding: 15px;
   top: 200px;
@@ -54,6 +53,7 @@ div.newCard {
   height: 350px;
   border-style: solid;
   background-color: white;
+  cursor: pointer;
 }
 .cardHeader {
   width:100%;
@@ -61,6 +61,9 @@ div.newCard {
 }
 .left {
   float: left;
+}
+.category-selector {
+  display: inline-block;
 }
 .descCont {
   float: left;

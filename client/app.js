@@ -1,5 +1,5 @@
 var app = angular.module('hydraApp', []);
-app.factory('User', function($http, $window) {
+app.factory('User', function($http, $window, $location) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
   var userData = {
     user_id: '1234567',
@@ -29,7 +29,7 @@ app.factory('User', function($http, $window) {
     }
     ]
   };  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
-  var trip;
+
   //get request to pull in user info
   var newSignUp = function(email, password) {
     console.log('newSignUp is getting invoked!');
@@ -71,8 +71,6 @@ app.factory('User', function($http, $window) {
         console.log('error!');
       });
   };
-
-
 
 var newTrip = function(user_id, tripName) {
     console.log('newTrip is getting invoked!');
@@ -133,15 +131,32 @@ var newTrip = function(user_id, tripName) {
       });
   };
 
+  var go = function(path) {
+    // if(isAuth) {
+      $location.path(path);
+    // } else {
+    //   $location.path('login/login');
+    // }
+  };
 
+  var currentTrip = {
+    value: userData.trips[0]
+  };
 
+  var setTrip = function(selectedTrip) {
+    currentTrip.value = selectedTrip;
+    console.log('currentTrip.value: ', currentTrip.value);
+  }
 
   return {
     userData: userData,
     newSignUp: newSignUp,
     newTrip: newTrip,
     newActivity: newActivity,
-    signIn: signIn
+    signIn: signIn,
+    setTrip: setTrip,
+    currentTrip: currentTrip,
+    go: go
   };
 });
 
