@@ -187,18 +187,18 @@ div.signup-link {
 .signup-button {
   top: 0px;
 }
-div.login-text {
+div.signin-text {
   position: relative;
   text-align: center;
   top: 250px;
   font-family: 'Aclonica', sans-serif;
   color: white;
 }
-div.login-link {
+div.signin-link {
   position: relative;
   text-align: center;
 }
-.login-button {
+.signin-button {
   top: 0px;
 }
 #exampleTripName {

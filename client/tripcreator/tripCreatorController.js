@@ -2,7 +2,7 @@ angular.module('tripCreatorModule', ['hydraApp']).controller('tripCreatorControl
   $scope.tripName = '';
   $scope.userData = User.userData;
   $scope.newTrip = User.newTrip;
-  $scope.user_id = $scope.userData['_id'];
+  $scope.user_id = $scope.userData.value['_id'];
   $scope.setTrip = User.setTrip;
   $scope.go = User.go;
 }]);

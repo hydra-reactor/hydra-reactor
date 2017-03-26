@@ -1,6 +1,6 @@
 
   <div class="cards">
-    <div class="card" ng-repeat="trip in userData.trips track by $index">
+    <div class="card" ng-repeat="trip in userData.value.trips track by $index">
         <div class="cardContainer">
           <div class="newCard" ng-click="setTrip(trip); go('/listview')">
             <div class="cardHeader">

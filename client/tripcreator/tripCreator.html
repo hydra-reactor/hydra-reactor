@@ -4,6 +4,6 @@
       <input type="text" class="form-control" id="exampleTripName" placeholder="Trip Name" ng-model="tripName">
     </div>
     <!-- DIMITRI: ng-click invocation of newTrip below needs to be tested -->
-    <button type="submit" class="btn trip-creator-btn" ng-click="newTrip(userData['_id'], tripName); go('/tripview')">Submit</button>
+    <button type="submit" class="btn trip-creator-btn" ng-click="newTrip(userData.value['_id'], tripName); go('/tripview')">Submit</button>
   </form>
 </div>

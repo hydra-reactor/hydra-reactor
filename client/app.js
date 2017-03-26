@@ -2,56 +2,58 @@ var app = angular.module('hydraApp', []);
 app.factory('User', function($http, $window, $location) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
   var userData = {
-    user_id: '1234567',
-    trips: [
-      {
-        trip_id: '123',
-        tripName: 'Hawaii Vacation',
-        activities: [
-          {
-            activity_id: '32hhwhaseh',
-            description: 'Eat Delicious Pizza',
-            category: 'Food'
-          },
-          {
-            activity_id: 'bhwh2hdhsh',
-            description: 'Go Dancing',
-            category: 'Nightlife'
-          },
-          {
-            activity_id: 'bh3hw2shae',
-            description: 'Surf',
-            category: 'Exercise'
-          }
-        ]
-      },
-      {
-        trip_id: '456',
-        tripName: 'Vegas Vacation',
-        activities: [
-          {
-            activity_id: '2hjdsiud2',
-            description: 'All-you-can-eat buffet',
-            category: 'Food'
-          },
-          {
-            activity_id: 'fjdisunf83',
-            description: 'Watch Carrot Top Live',
-            category: 'Entertainment'
-          },
-          {
-            activity_id: 'sfjk3juf8e',
-            description: 'Bet it all on black',
-            category: 'Nightlife'
-          },
-          {
-            activity_id: 'fsnmnwifu8',
-            description: 'Continue to make poor decisions',
-            category: 'Other'
-          }
-        ]
-      }
-    ]
+    value: {
+      user_id: '1234567',
+      trips: [
+        {
+          trip_id: '123',
+          tripName: 'Hawaii Vacation',
+          activities: [
+            {
+              activity_id: '32hhwhaseh',
+              description: 'Eat Delicious Pizza',
+              category: 'Food'
+            },
+            {
+              activity_id: 'bhwh2hdhsh',
+              description: 'Go Dancing',
+              category: 'Nightlife'
+            },
+            {
+              activity_id: 'bh3hw2shae',
+              description: 'Surf',
+              category: 'Exercise'
+            }
+          ]
+        },
+        {
+          trip_id: '456',
+          tripName: 'Vegas Vacation',
+          activities: [
+            {
+              activity_id: '2hjdsiud2',
+              description: 'All-you-can-eat buffet',
+              category: 'Food'
+            },
+            {
+              activity_id: 'fjdisunf83',
+              description: 'Watch Carrot Top Live',
+              category: 'Entertainment'
+            },
+            {
+              activity_id: 'sfjk3juf8e',
+              description: 'Bet it all on black',
+              category: 'Nightlife'
+            },
+            {
+              activity_id: 'fsnmnwifu8',
+              description: 'Continue to make poor decisions',
+              category: 'Other'
+            }
+          ]
+        }
+      ]
+    }
   };
   //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
 
@@ -69,9 +71,9 @@ app.factory('User', function($http, $window, $location) {
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        userData = response.data;
+        userData.value = response.data;
         localStorage.setItem('auth', response.data.tokens[0].token)
-        $window.location.href = '#/tripview.html';
+        window.location.href = '#/tripview';
       }, function errorCallback(error) {
         console.log('error!');
       });
@@ -88,10 +90,11 @@ app.factory('User', function($http, $window, $location) {
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        userData = response.data;
+        userData.value = response.data;
         localStorage.setItem('auth', response.data.tokens[0].token)
         console.log(userData);
-        $window.location.href = '#/tripview.html';
+        window.location.href = '#/tripview';
+        // document.location.hash = '/tripview';
       }, function errorCallback(error) {
         console.log('error!');
       });
@@ -118,7 +121,7 @@ var newTrip = function(user_id, tripName) {
         console.log('newTrip success');
         console.dir(response);
         console.log('the returned data is:', response.data);
-        userData = response.data;
+        userData.value = response.data;
         console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
@@ -149,7 +152,7 @@ var newTrip = function(user_id, tripName) {
         console.log('newActivity success');
         console.dir(response);
         console.log('the returned data is:', response.data);
-        userData = response.data;
+        userData.value = response.data;
         console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
@@ -164,12 +167,12 @@ var newTrip = function(user_id, tripName) {
     // if(isAuth) {
       $location.path(path);
     // } else {
-    //   $location.path('login/login');
+    //   $location.path('signin/signin');
     // }
   };
 
   var currentTrip = {
-    value: userData.trips[0]
+    value: undefined
   };
 
   var setTrip = function(selectedTrip) {
