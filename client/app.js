@@ -6,7 +6,7 @@ app.factory('User', function($http, $window, $location) {
       user_id: '1234567',
       trips: [
         {
-          trip_id: '123',
+          _id: '123',
           tripName: 'Hawaii Vacation',
           activities: [
             {
@@ -27,7 +27,7 @@ app.factory('User', function($http, $window, $location) {
           ]
         },
         {
-          trip_id: '456',
+          _id: '456',
           tripName: 'Vegas Vacation',
           activities: [
             {
@@ -55,9 +55,8 @@ app.factory('User', function($http, $window, $location) {
       ]
     }
   };
-  //THIS IS DUMMY DATA - OUR LOCAL DATA WILL ERASE EVERY TIME WE NEED TO REFRESH PAGE WITH A CHANGE TO THE CODE, SO DUMMY DATA IN THE CODE KEEPS IT PERSISTENT.
 
-  //get request to pull in user info
+  // POST request to create a new user
   var newSignUp = function(email, password) {
     console.log('newSignUp is getting invoked!');
     var req = {
@@ -80,6 +79,7 @@ app.factory('User', function($http, $window, $location) {
 
   };
 
+  // POST request to sign in a user
   var signIn = function(email, password){
     console.log('signIn is getting invoked!');
     var req = {
@@ -159,25 +159,26 @@ var newTrip = function(user_id, tripName) {
       });
   };
 
-// DIMITRI: This function is how we've been navigating between views. However,
-// it does not currently account for any authentication check. I have stubbed out
-// a concept for what that might look like below in the comments, but can you
-// please take a look and update this as needed?
+// A function to redirect the user to the specified path
   var go = function(path) {
-    // if(isAuth) {
-      $location.path(path);
-    // } else {
-    //   $location.path('signin/signin');
-    // }
+    $location.path(path);
   };
 
-  var currentTrip = {
-    value: undefined
+// A variable to store the index the currently selected trip based on it's index
+// inside the userData.trips array. This value is used to populate the correct list
+// of trips inside the listview based on the current selected trip.
+  var currentTripIndex = {
+    value: 0
   };
 
-  var setTrip = function(selectedTrip) {
-    currentTrip.value = selectedTrip;
-    console.log('currentTrip.value: ', currentTrip.value);
+// A function to set the trip index referenced above
+  var setTripIndex = function(selectedTrip) {
+    for(var i = 0; i < userData.value.trips.length; i++) {
+      if(selectedTrip['_id'] === userData.value.trips[i]['_id']) {
+        currentTripIndex.value = i;
+      }
+    }
+    console.log('currentTripIndex.value: ', currentTripIndex.value);
   }
 
   return {
@@ -186,95 +187,8 @@ var newTrip = function(user_id, tripName) {
     newTrip: newTrip,
     newActivity: newActivity,
     signIn: signIn,
-    setTrip: setTrip,
-    currentTrip: currentTrip,
+    setTripIndex: setTripIndex,
+    currentTripIndex: currentTripIndex,
     go: go
   };
 });
-
-
-
-
-// app.factory('Activities', function($http) {
-//   // Function to post a new activity to the database
-  // var postNewData = function(description, category, storage) {
-  //   // Set up the request object
-  //   var req = {
-  //     method: 'POST',
-  //     url: '/api/activities',
-  //     data: {
-  //       description: description,
-  //       category: category
-  //     }
-  //   };
-  //   // Pass the request object to an $http call
-  //   $http(req)
-  //   // the following will be called asynchronously when the response is available
-  //   .then(function successCallback(response) {
-  //     console.log('postNewData success');
-  //     storage.push(response.data);
-  //   }, function errorCallback(error) {
-  //     console.log('error!');
-  //   });
-  // };
-//   // Function to get all activities from the database
-//   var getData = function() {
-//     // Set up the request object
-//     var req = {
-//       method: 'GET',
-//       url: '/api/activities'
-//     };
-//     // Pass the request object to an $http call
-//     return $http(req)
-//     // the following will be called asynchronously when the response is available
-//     .then(function successCallback(response) {
-//       console.log('Client getData response.data: ', response.data);
-//       return response.data;
-//     }, function errorCallback(error) {
-//       console.log('error!');
-//     });
-//   };
-//   // Function to delete an activity
-//   var deleteActivity = function(activity) {
-//     // Set up the request object
-//     var req = {
-//       method: 'DELETE',
-//       url: '/api/activities',
-//       data: activity
-//     };
-//     console.log('delete Activity request: ', req);
-//     // Pass the request object to an $http call
-//     $http(req)
-//     // the following will be called asynchronously when the response is available
-//     .then(function successCallback(response) {
-//       console.log('Client deleteActivity response: ', response);
-//     }, function errorCallback(error) {
-//       console.log('error!');
-//     });
-//   };
-//   return {
-//     postNewData: postNewData,
-//     getData: getData,
-//     deleteActivity: deleteActivity
-//   };
-// });
-// app.controller('activityController', ['$scope', '$http', 'Activities', function($scope, $http, Activities) {
-//   $scope.description = '';
-//   $scope.category = '';
-//   $scope.storage = [];
-//   // if there's no text in the input field, don't do the post request
-//   // empty the input field after a post request
-//   $scope.postNewData = Activities.postNewData;
-//   $scope.getData = Activities.getData;
-//   $scope.deleteActivity = Activities.deleteActivity;
-//   $scope.getData().then(function(data) {
-//     $scope.storage = data;
-//   });
-//   // The following code is needed to send a data object in an $http DELETE request.
-//   // Stack overflow issue that addresses this: http://stackoverflow.com/questions/37796227/body-is-empty-when-parsing-delete-request-with-express-and-body-parser
-//   $http.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
-// }]);
-// use ng-repeat on the index.html page to display each item in storage
-
-
-// });

@@ -2,7 +2,7 @@
   <div class="cards">
     <div class="card" ng-repeat="trip in userData.value.trips track by $index">
         <div class="cardContainer">
-          <div class="newCard" ng-click="setTrip(trip); go('/listview')">
+          <div class="newCard" ng-click="setTripIndex(trip); go('/listview')">
             <div class="cardHeader">
               <div class="cardLogo left"> </div>
               <div>

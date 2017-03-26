@@ -1,5 +1,5 @@
 <div class="container" ng-controller='activityController'>
-  <div class="trip-name">{{ currentTrip.value.tripName }}</div>
+  <div class="trip-name">{{ userData.value.trips[currentTripIndex.value].tripName }}</div>
   <div class="list-view-form">
     <form class="form-inline">
       <div class="form-group activity-input">
@@ -16,13 +16,12 @@
         <option value="Shopping">Shopping</option>
         <option value="Other">Other</option>
       </select>
-      <!-- DIMITRI: ng-click invocation of newActivity below needs to be tested -->
-      <button ng-click="newActivity(userData.value['_id'], currentTrip.value['_id'], description, category)" type="submit" class="btn btn-primary">Add Activity</button>
+      <button ng-click="newActivity(userData.value['_id'], userData.value.trips[currentTripIndex.value]['_id'], description, category)" type="submit" class="btn btn-primary">Add Activity</button>
     </form>
   </div>
   <div class='list-view-activities'>
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat='item in currentTrip.value.activities track by $index' >{{item.description}} ~ {{item.category}}</li>
+      <li class="list-group-item" ng-repeat="item in userData.value.trips[currentTripIndex.value].activities track by $index">{{item.description}} ~ {{item.category}}</li>
     </ul>
   </div>
 </div>
