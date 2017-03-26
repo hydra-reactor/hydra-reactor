@@ -15,6 +15,7 @@ var db = mongoose.connection;
 app.use(express.static(path.join(__dirname, '../client/')));
 // Set up POST request listener for creating a new user
 // Expects to receive email and password in req.body
+
 app.post('/api/signup', function(req, res) {
   console.log('Received the following POST request to create a user: ', req.body);
   // Mongoose method to create a user
@@ -26,14 +27,8 @@ app.post('/api/signup', function(req, res) {
   }).catch(err => {
     res.status(400).send(err);
   });
-    // User.create(req.body, function(err, user) {
-  //   if(err) {
-  //     console.log('Error: ', err);
-  //   } else {
-  //     res.json(user);
-  //   }
-  // });
 });
+
 // Set up POST request listener for signing in a user
 // Expects to receive a user_id in req.body
 app.post('/api/signin', function(req, res) {
@@ -46,17 +41,8 @@ app.post('/api/signin', function(req, res) {
   }).catch(err => {
     res.status(400).send(err);
   });
-  // Mongoose method to retrieve a user
-  // User.findOne({
-  //   'email': req.body.email
-  // }, function(err, user) {
-  //   if(err) {
-  //     console.log('Error: ', err)
-  //   } else {
-  //     res.json(user);
-  //   }
-  // });
 });
+
 app.delete('/api/token', authenticate, (req, res) => {
   req.user.removeToken(req.token).then(() => {
     res.status(200).send();
@@ -64,6 +50,7 @@ app.delete('/api/token', authenticate, (req, res) => {
     res.status(400).send();
   });
 });
+
 // Set up POST request listener for creating a new trip
 // Expects to receive user_id and trip in req.body, where trip is an object with a tripName property
 app.post('/api/trips', authenticate, function(req, res) {
@@ -93,6 +80,7 @@ app.post('/api/trips', authenticate, function(req, res) {
     }
   });
 });
+
 // Set up POST request listener for creating a new activity
 // Expects to receive user_id, trip_id, and activity in req.body,
 // where activity is an object with description and category properties
@@ -111,10 +99,11 @@ app.post('/api/activities', authenticate, function(req, res) {
     }
   });
 });
+
 // Set up DELETE request listener for deleting an activity
 // Expects to receive user_id, trip_id, and activity_id in req.body
 app.delete('/api/activities', authenticate, function(req, res) {
-  console.log('Received the following DELETE request to delete an activity', req.body);
+  console.log('Received the following DELETE request to delete an activity: ', req.body);
   // Call Mongoose remove method on id matching the request
   User.findById(req.body.user_id, function(err, user) {
     if(err) {
@@ -130,8 +119,10 @@ app.delete('/api/activities', authenticate, function(req, res) {
     }
   });
 });
+
 var port = process.env.PORT || 3000;
 // var ip = process.env.IP || 'localhost';
+
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 });

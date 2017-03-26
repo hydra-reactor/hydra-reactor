@@ -1,64 +1,22 @@
 var app = angular.module('hydraApp', []);
 app.factory('User', function($http, $window, $location) {
 //storage object, which will be equal to 'data' from an initial get request once the user signs in
+
+  // The following value is very important, as it is what is used to populate the tripview and listview.
+  // All $http requests receive an updated user object in the response, and that value
+  // is used to update the 'value' property in the userData object below. The userData object
+  // is then passed to all controllers via their $scope variables, so they can all use it
+  // to populate data. Note: you cannot overwrite the userData variable itself or the controllers
+  // will no longer be pointing to the same reference. That is why the 'value' property is used
+  // to store the data. It is initialized to undefined and then overwritten when the user signs in.
+  // Please note that refreshing the page currently wipes out any data stored here at the moment.
+
   var userData = {
-    value: {
-      user_id: '1234567',
-      trips: [
-        {
-          _id: '123',
-          tripName: 'Hawaii Vacation',
-          activities: [
-            {
-              activity_id: '32hhwhaseh',
-              description: 'Eat Delicious Pizza',
-              category: 'Food'
-            },
-            {
-              activity_id: 'bhwh2hdhsh',
-              description: 'Go Dancing',
-              category: 'Nightlife'
-            },
-            {
-              activity_id: 'bh3hw2shae',
-              description: 'Surf',
-              category: 'Exercise'
-            }
-          ]
-        },
-        {
-          _id: '456',
-          tripName: 'Vegas Vacation',
-          activities: [
-            {
-              activity_id: '2hjdsiud2',
-              description: 'All-you-can-eat buffet',
-              category: 'Food'
-            },
-            {
-              activity_id: 'fjdisunf83',
-              description: 'Watch Carrot Top Live',
-              category: 'Entertainment'
-            },
-            {
-              activity_id: 'sfjk3juf8e',
-              description: 'Bet it all on black',
-              category: 'Nightlife'
-            },
-            {
-              activity_id: 'fsnmnwifu8',
-              description: 'Continue to make poor decisions',
-              category: 'Other'
-            }
-          ]
-        }
-      ]
-    }
+    value: undefined
   };
 
   // POST request to create a new user
   var newSignUp = function(email, password) {
-    console.log('newSignUp is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/signup',
@@ -67,6 +25,7 @@ app.factory('User', function($http, $window, $location) {
         "password": password
       }
     };
+    console.log('Client sending newSignuUp request: ', req)
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
@@ -81,18 +40,17 @@ app.factory('User', function($http, $window, $location) {
 
   // POST request to sign in a user
   var signIn = function(email, password){
-    console.log('signIn is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/signin',
       data: {email, password}
     };
+    console.log('Client sending signin request: ', req);
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
         userData.value = response.data;
         localStorage.setItem('auth', response.data.tokens[0].token)
-        console.log(userData);
         window.location.href = '#/tripview';
         // document.location.hash = '/tripview';
       }, function errorCallback(error) {
@@ -101,7 +59,6 @@ app.factory('User', function($http, $window, $location) {
   };
 
 var newTrip = function(user_id, tripName) {
-    console.log('newTrip is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/trips',
@@ -115,14 +72,12 @@ var newTrip = function(user_id, tripName) {
         }
       }
     };
+    console.log('Client sending newTrip request: ', req);
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        console.log('newTrip success');
-        console.dir(response);
-        console.log('the returned data is:', response.data);
+        console.log('Client receiving newTrip response: ', response);
         userData.value = response.data;
-        console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
       });
@@ -130,7 +85,6 @@ var newTrip = function(user_id, tripName) {
   };
 
   var newActivity = function(user_id, trip_id, description, category) {
-    console.log('newActivity is getting invoked!');
     var req = {
       method: 'POST',
       url: '/api/activities',
@@ -138,25 +92,50 @@ var newTrip = function(user_id, tripName) {
         'x-auth': localStorage.getItem('auth')
       },
       data: {
-        "user_id": user_id,
-        "trip_id": trip_id,
-        "activity": {
-          "description": description,
-          "category": category
+        user_id: user_id,
+        trip_id: trip_id,
+        activity: {
+          description: description,
+          category: category
         }
       }
     };
+    console.log('Client sending newActivity request: ', req);
     $http(req)
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
-        console.log('newActivity success');
-        console.dir(response);
-        console.log('the returned data is:', response.data);
+        console.log('Client receiving newActivity response: ', response);
         userData.value = response.data;
-        console.log(userData);
       }, function errorCallback(error) {
         console.log('error!');
       });
+  };
+
+  // Function to delete an activity
+  var deleteActivity = function(user_id, trip_id, activity_id) {
+    var req = {
+      method: 'DELETE',
+      url: '/api/activities',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'x-auth': localStorage.getItem('auth')
+      },
+      data: {
+        "user_id": user_id,
+        "trip_id": trip_id,
+        "activity_id": activity_id
+      }
+    };
+    console.log('Client sending deleteActivity request: ', req);
+    // Pass the request object to an $http call
+    $http(req)
+    // the following will be called asynchronously when the response is available
+    .then(function successCallback(response) {
+      console.log('Client receiving deleteActivity response: ', response);
+      userData.value = response.data;
+    }, function errorCallback(error) {
+      console.log('error!');
+    });
   };
 
 // A function to redirect the user to the specified path
@@ -186,6 +165,7 @@ var newTrip = function(user_id, tripName) {
     newSignUp: newSignUp,
     newTrip: newTrip,
     newActivity: newActivity,
+    deleteActivity: deleteActivity,
     signIn: signIn,
     setTripIndex: setTripIndex,
     currentTripIndex: currentTripIndex,
