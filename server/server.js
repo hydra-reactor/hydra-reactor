@@ -43,6 +43,10 @@ app.post('/api/signin', function(req, res) {
   });
 });
 
+app.get('/api/users', authenticate, (req, res) => {
+  res.status(200).send(req.user);
+});
+
 app.delete('/api/token', authenticate, (req, res) => {
   req.user.removeToken(req.token).then(() => {
     res.status(200).send();

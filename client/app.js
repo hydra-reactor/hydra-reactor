@@ -1,20 +1,8 @@
 var app = angular.module('hydraApp', []);
-app.factory('User', function($http, $window, $location) {
-//storage object, which will be equal to 'data' from an initial get request once the user signs in
 
-  // The following value is very important, as it is what is used to populate the tripview and listview.
-  // All $http requests receive an updated user object in the response, and that value
-  // is used to update the 'value' property in the userData object below. The userData object
-  // is then passed to all controllers via their $scope variables, so they can all use it
-  // to populate data. Note: you cannot overwrite the userData variable itself or the controllers
-  // will no longer be pointing to the same reference. That is why the 'value' property is used
-  // to store the data. It is initialized to undefined and then overwritten when the user signs in.
-  // Please note that refreshing the page currently wipes out any data stored here at the moment.
-console.log('Factory run');
+app.factory('User', function($http, $window, $location, $rootScope) {
 
-  var userData = {
-    value: undefined
-  };
+  var userData = $rootScope.userData;
 
   // POST request to create a new user
   var newSignUp = function(email, password) {
@@ -35,7 +23,7 @@ console.log('Factory run');
         sessionStorage.setItem('auth', response.data.tokens[0].token)
         window.location.href = '#/tripview';
       }, function errorCallback(error) {
-        console.log('error!');
+        console.log('error!', error);
       });
 
   };
@@ -174,4 +162,46 @@ var newTrip = function(user_id, tripName) {
     currentTripIndex: currentTripIndex,
     go: go
   };
+});
+
+
+app.run(function ($http, $rootScope, $location) {
+  //storage object, which will be equal to 'data' from an initial get request once the user signs in
+
+  // The following value is very important, as it is what is used to populate the tripview and listview.
+  // All $http requests receive an updated user object in the response, and that value
+  // is used to update the 'value' property in the userData object below. The userData object
+  // is then passed to all controllers via their $scope variables, so they can all use it
+  // to populate data. Note: you cannot overwrite the userData variable itself or the controllers
+  // will no longer be pointing to the same reference. That is why the 'value' property is used
+  // to store the data. It is initialized to undefined and then overwritten when the user signs in.
+
+  var userData = {
+    value: undefined
+  };
+
+  if (sessionStorage.getItem('auth')) {
+    var req = {
+      method: 'GET',
+      url: '/api/users',
+      headers: {
+        'x-auth': sessionStorage.getItem('auth')
+      }
+    };
+    $http(req)
+      .then(function successCallback(response) {
+        userData.value = response.data;
+        $location.path('/tripview');
+      }, function errorCallback(error) {
+        console.log('error!', error);
+      });
+  }
+
+  $rootScope.userData = userData;
+
+  // $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+  //   if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+  //     $location.path('/signin');
+  //   }
+  // });
 });
