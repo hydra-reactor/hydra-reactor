@@ -10,6 +10,7 @@ app.factory('User', function($http, $window, $location) {
   // will no longer be pointing to the same reference. That is why the 'value' property is used
   // to store the data. It is initialized to undefined and then overwritten when the user signs in.
   // Please note that refreshing the page currently wipes out any data stored here at the moment.
+console.log('Factory run');
 
   var userData = {
     value: undefined
@@ -30,7 +31,8 @@ app.factory('User', function($http, $window, $location) {
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
         userData.value = response.data;
-        localStorage.setItem('auth', response.data.tokens[0].token)
+        // save JWT token in local sessionStorage
+        sessionStorage.setItem('auth', response.data.tokens[0].token)
         window.location.href = '#/tripview';
       }, function errorCallback(error) {
         console.log('error!');
@@ -50,11 +52,12 @@ app.factory('User', function($http, $window, $location) {
       // the following will be called asynchronously when the response is available
       .then(function successCallback(response) {
         userData.value = response.data;
-        localStorage.setItem('auth', response.data.tokens[0].token)
+        // save JWT token in local sessionStorage
+        sessionStorage.setItem('auth', response.data.tokens[0].token)
         window.location.href = '#/tripview';
         // document.location.hash = '/tripview';
       }, function errorCallback(error) {
-        console.log('error!');
+        console.log('error!', error);
       });
   };
 
@@ -63,7 +66,7 @@ var newTrip = function(user_id, tripName) {
       method: 'POST',
       url: '/api/trips',
       headers: {
-        'x-auth': localStorage.getItem('auth')
+        'x-auth': sessionStorage.getItem('auth')
       },
       data: {
         "user_id": user_id,  // Need to update with database data
@@ -79,7 +82,7 @@ var newTrip = function(user_id, tripName) {
         console.log('Client receiving newTrip response: ', response);
         userData.value = response.data;
       }, function errorCallback(error) {
-        console.log('error!');
+        console.log('error!', error);
       });
 
   };
@@ -89,7 +92,7 @@ var newTrip = function(user_id, tripName) {
       method: 'POST',
       url: '/api/activities',
       headers: {
-        'x-auth': localStorage.getItem('auth')
+        'x-auth': sessionStorage.getItem('auth')
       },
       data: {
         user_id: user_id,
@@ -107,7 +110,7 @@ var newTrip = function(user_id, tripName) {
         console.log('Client receiving newActivity response: ', response);
         userData.value = response.data;
       }, function errorCallback(error) {
-        console.log('error!');
+        console.log('error!', error);
       });
   };
 
@@ -118,7 +121,7 @@ var newTrip = function(user_id, tripName) {
       url: '/api/activities',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'x-auth': localStorage.getItem('auth')
+        'x-auth': sessionStorage.getItem('auth')
       },
       data: {
         "user_id": user_id,
@@ -134,7 +137,7 @@ var newTrip = function(user_id, tripName) {
       console.log('Client receiving deleteActivity response: ', response);
       userData.value = response.data;
     }, function errorCallback(error) {
-      console.log('error!');
+      console.log('error!', error);
     });
   };
 

@@ -11,14 +11,35 @@ angular.module('signinSplash', ['ngRoute', 'signinModule', 'signupModule', 'hydr
     controller: 'signupController'
   })
   .when('/listview', {
+    resolve: {
+      check: function ($location) {
+        if (!sessionStorage.getItem('auth')) {
+          $location.path('/signin');
+        }
+      }
+    },
     templateUrl: 'listview/listview.html',
     controller: 'activityController'
   })
   .when('/tripview', {
+    resolve: {
+      check: function ($location) {
+        if (!sessionStorage.getItem('auth')) {
+          $location.path('/signin');
+        }
+      }
+    },
     templateUrl: 'tripview/tripview.html',
     controller: 'tripViewController'
   })
   .when('/tripcreator', {
+    resolve: {
+      check: function ($location) {
+        if (!sessionStorage.getItem('auth')) {
+          $location.path('/signin');
+        }
+      }
+    },
     templateUrl: 'tripcreator/tripCreator.html',
     controller: 'tripCreatorController'
   })
