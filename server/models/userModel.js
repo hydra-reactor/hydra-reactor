@@ -60,6 +60,8 @@ var UserSchema = new Schema({
 
 
 // methods - instance methods
+
+// Generate JWT tokens
 UserSchema.methods.generateToken = function () {
   var user = this;
   var access = 'auth';
@@ -94,6 +96,7 @@ UserSchema.statics.findByToken = function (token) {
   } catch (err) {
     return Promise.reject(err);
   }
+  // find user by id and token
   return User.findOne({
     '_id': decoded._id,
     'tokens.token': token,
@@ -101,11 +104,9 @@ UserSchema.statics.findByToken = function (token) {
   });
 };
 
-
+// find user by email and password
 UserSchema.statics.findByCredentials = function (email, password) {
   var User = this;
-  // console.log('----- findByCredentials -----');
-  // console.log('User', User);
 
   return User.findOne({email}).then((user) => {
     if (!user) {
@@ -116,11 +117,9 @@ UserSchema.statics.findByCredentials = function (email, password) {
     return new Promise((resolve, reject) => {
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
-          console.log('Resolve bcrypt');
           resolve(user);
         } else {
-          console.log('Reject bcrypt');
-          reject();
+          reject(err);
         }
       });
     });
@@ -134,6 +133,7 @@ UserSchema.pre('save', function (next) {
   if (!user.isModified('password')) {
     return next();
   }
+  // hash user password using salt 10 times
   bcrypt.hash(user.password, 10, (err, hash) => {
     if (err) {
       return next(err);
