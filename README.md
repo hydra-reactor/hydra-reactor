@@ -35,7 +35,7 @@ Ensure you have a local version of MongoDB installed. Run the Mongo daemon and l
 
 `mongod`
 
-From the root directory, start the server with the following command:
+From the root directory, start the server:
 
 `node server/server.js`
 

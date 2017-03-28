@@ -46,7 +46,6 @@ var UserSchema = new Schema({
   trips: [TripSchema]
 });
 
-
 // 'UserSchema.methods' is a collection of methods on the instance of the UserSchema
 
 // Generate JWT tokens
@@ -62,7 +61,6 @@ UserSchema.methods.generateToken = function () {
   });
 };
 
-
 UserSchema.methods.removeToken = function (token) {
   var user = this;
 
@@ -72,7 +70,6 @@ UserSchema.methods.removeToken = function (token) {
     }
   });
 };
-
 
 // 'UserSchema.statics' is a collection of methods on the UserSchema model
 UserSchema.statics.findByToken = function (token) {
