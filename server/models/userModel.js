@@ -12,17 +12,6 @@ var ActivitySchema = new Schema({
   category: String
 });
 
-// Commented versions that include Day schema
-// var DaySchema = new Schema({
-//   day: Number,
-//   activities: [ActivitySchema]
-// });
-//
-// var TripSchema = new Schema({
-//   tripName: String,
-//   days: [DaySchema]
-// });
-
 var TripSchema = new Schema({
   tripName: String,
   activities: [ActivitySchema]
@@ -36,30 +25,29 @@ var UserSchema = new Schema({
     // unique: true,
     validate: {
       isAsync: true,
+      // NPM module to validate emails
       validator: validator.isEmail,
       message: '{VALUE} is not a valid email'
     }
   },
   password: {
     type: String,
-    require: true
-    // minlength: 6
+    required: true,
+    minlength: 1 // Set to 1 for testing, update for production
   },
   tokens: [{
     access: {
       type: String
-      // required: true
     },
     token: {
       type: String
-      // required: true
     }
   }],
   trips: [TripSchema]
 });
 
 
-// methods - instance methods
+// 'UserSchema.methods' is a collection of methods on the instance of the UserSchema
 
 // Generate JWT tokens
 UserSchema.methods.generateToken = function () {
@@ -86,7 +74,7 @@ UserSchema.methods.removeToken = function (token) {
 };
 
 
-// statics - Model methods
+// 'UserSchema.statics' is a collection of methods on the UserSchema model
 UserSchema.statics.findByToken = function (token) {
   var User = this;
   var decoded;
