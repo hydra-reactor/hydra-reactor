@@ -172,8 +172,8 @@ app.factory('User', function($http, $window, $location, $rootScope) {
     $location.path(path);
   };
 
-// A variable to store the index of the currently selected trip based on it's index
-// inside the userData.trips array. This value is used to populate the correct list
+// A variable to store the index of the currently selected trip inside the
+// userData.trips array. This value is used to populate the correct list
 // of trips inside the listview based on the currently selected trip.
   var currentTripIndex = {
     value: 0
