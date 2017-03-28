@@ -16,15 +16,10 @@ Hydra-Reactor
 
 ## Usage
 
-> Ensure you have a local version of MongoDB installed. Run the Mongo daemon (mongod from the command line) and leave it running in the background.
-
-`mongod`
-
-From the root directory, run node server/server.js to start the server.
-
-`node server/server.js`
-
-You can use a service like [Postman](https://www.getpostman.com) to test requests to the database. Sample request objects are included in server.js for convenience.
+1) Create a user account with email and password.
+2) In /tripview, click on the card with the plus icon to add a new trip. Then, click on your trip to enter the activity list for that trip.
+4) In /listview, fill in the form fields and press the 'Add Activity' button to add a new activity. You can also click on any of the list items to delete that activity.
+5) At any time, click on the Hydra Travel banner at the top to return to the /tripview.
 
 ## Requirements
 
@@ -35,6 +30,14 @@ You can use a service like [Postman](https://www.getpostman.com) to test request
 - Path 0.12.x
 
 ## Development
+
+Ensure you have a local version of MongoDB installed. Run the Mongo daemon and leave it running in the background:
+
+`mongod`
+
+From the root directory, start the server with the following command:
+
+`node server/server.js`
 
 ### Installing Dependencies
 

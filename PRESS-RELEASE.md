@@ -28,7 +28,7 @@ Once the project moves into development, the press release can be used as a touc
   > There are many todo apps, but most do not focus exclusively on planning trips. There are many travel planners, but many are overly complicated and are primarily focused on scheduling activities into specific time slots, which isn't ideal early on in the planning phase.
 
 ## Solution ##
-  > The Hydra Travel Planner is a simple travel planner that is incredibly easy to use. As you think of ideas for your upcoming trip, just add them to your list for a given day. Everything stays neatly organized and easy to access while you're on your trip.
+  > The Hydra Travel Planner is a simple travel planner that is incredibly easy to use. As you think of ideas for your upcoming trip, just add them to your list for that trip. Everything stays neatly organized and easy to access while you're on your trip.
 
 ## Quote from You ##
   > We are very excited to be launching the Hydra Travel Planner. It is a fantastic way to gather and organize ideas for your next trip.
