@@ -1,20 +1,16 @@
 <div ng-controller="signinController">
   <form>
     <div class="form-group">
-      <!-- <label for="exampleInputEmail1">Email address</label> -->
       <input type="email" class="form-control" id="exampleEmail" placeholder="Email" ng-model="email">
     </div>
     <div class="form-group">
-      <!-- <label for="exampleInputPassword1">Password</label> -->
       <input type="password" class="form-control" ng-model="password" id="examplePassword" placeholder="Password">
     </div>
     <button type="submit" class="btn" ng-Click='signIn(email, password)'>Submit</button>
   </form>
-
   <div class="signup-text">don't have an account? sign up now.
     <div class="signup-link">
       <form method="link" action="#/signup">
-        <!-- <input type="submit" class="btn" value="Create Account"> -->
         <button type="submit" class="btn signup-button">Create Account</button>
       </form>
     </div>

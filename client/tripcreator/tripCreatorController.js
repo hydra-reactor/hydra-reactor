@@ -1,4 +1,3 @@
-// angular.module('tripCreatorModule', ['hydraApp']).controller('tripCreatorController', ['$scope', '$location', '$http', 'User', function($scope, $location, $http, User) {
 angular.module('tripCreatorModule', []).controller('tripCreatorController', ['$scope', '$location', '$http', 'User', function($scope, $location, $http, User) {
   $scope.tripName = '';
   $scope.userData = User.userData;
