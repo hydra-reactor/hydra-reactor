@@ -1,4 +1,4 @@
-Hydra-Reactor
+## Hydra Travel App
 
 The most delightful way to collect and organize plans for your next trip
 
@@ -31,14 +31,6 @@ The most delightful way to collect and organize plans for your next trip
 
 ## Development
 
-Ensure you have a local version of MongoDB installed. Run the Mongo daemon and leave it running in the background:
-
-`mongod`
-
-From the root directory, start the server:
-
-`node server/server.js`
-
 ### Installing Dependencies
 
 From within the root directory:
@@ -46,6 +38,14 @@ From within the root directory:
 ```sh
 npm install
 ```
+
+Ensure you have a local version of MongoDB installed. Run the Mongo daemon and leave it running in the background:
+
+`mongod`
+
+From the root directory, start the server:
+
+`node server/server.js`
 
 ### Roadmap
 
